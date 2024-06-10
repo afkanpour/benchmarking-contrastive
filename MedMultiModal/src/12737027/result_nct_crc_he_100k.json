@@ -1,0 +1,27 @@
+{
+    "dataset": "nck",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.4967629875256592,
+        "lp_acc5": 0.9545239223117006,
+        "lp_mean_per_class_recall": 0.42402509001243044,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.4541953206062317,
+        "map_weighted": 0.5244507789611816,
+        "acc_micro": 0.4966050982475281,
+        "acc_macro": 0.4240250885486603,
+        "acc_weighted": 0.4966050386428833,
+        "f1_micro": 0.4966050982475281,
+        "f1_macro": 0.36417457461357117,
+        "f1_weighted": 0.4388579726219177,
+        "aucroc_macro": 0.8304543495178223,
+        "aucroc_weighted": 0.8497365117073059
+    },
+    "language": "en"
+}

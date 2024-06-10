@@ -1,0 +1,22 @@
+{
+    "dataset": "sicap",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.4019792648444863,
+        "acc5": NaN,
+        "mean_per_class_recall": 0.25,
+        "map_macro": 0.25887301564216614,
+        "map_weighted": 0.31183740496635437,
+        "acc_micro": 0.4019792675971985,
+        "acc_macro": 0.25,
+        "acc_weighted": 0.4019792675971985,
+        "f1_micro": 0.4019792675971985,
+        "f1_macro": 0.14336134493350983,
+        "f1_weighted": 0.23051314055919647,
+        "aucroc_macro": 0.506899356842041,
+        "aucroc_weighted": 0.5136952996253967
+    },
+    "language": "en"
+}

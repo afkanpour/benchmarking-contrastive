@@ -1,0 +1,15 @@
+{
+    "dataset": "deepeyenet",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "zeroshot_retrieval",
+    "metrics": {
+        "image_retrieval_recall@1": 0.002229299396276474,
+        "text_retrieval_recall@1": 0.0009554140269756317,
+        "image_retrieval_recall@50": 0.04044586047530174,
+        "text_retrieval_recall@50": 0.02197452262043953,
+        "image_retrieval_recall@200": 0.0933120995759964,
+        "text_retrieval_recall@200": 0.08343949168920517
+    },
+    "language": "en"
+}

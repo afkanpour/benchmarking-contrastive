@@ -1,0 +1,27 @@
+{
+    "dataset": "dermamnist_plus",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.8379052369077307,
+        "lp_acc5": 0.9980049875311721,
+        "lp_mean_per_class_recall": 0.6729256262026622,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.7667833566665649,
+        "map_weighted": 0.8905108571052551,
+        "acc_micro": 0.8384039998054504,
+        "acc_macro": 0.6729256510734558,
+        "acc_weighted": 0.8384039998054504,
+        "f1_micro": 0.8384039998054504,
+        "f1_macro": 0.6994767189025879,
+        "f1_weighted": 0.8328325748443604,
+        "aucroc_macro": 0.965520977973938,
+        "aucroc_weighted": 0.952700674533844
+    },
+    "language": "en"
+}

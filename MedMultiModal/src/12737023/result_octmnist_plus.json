@@ -1,0 +1,22 @@
+{
+    "dataset": "octmnist_plus",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.27,
+        "acc5": NaN,
+        "mean_per_class_recall": 0.264,
+        "map_macro": 0.2736331820487976,
+        "map_weighted": 0.2736331820487976,
+        "acc_micro": 0.2639999985694885,
+        "acc_macro": 0.2639999985694885,
+        "acc_weighted": 0.2639999985694885,
+        "f1_micro": 0.2639999985694885,
+        "f1_macro": 0.13410153985023499,
+        "f1_weighted": 0.13410153985023499,
+        "aucroc_macro": 0.5409806966781616,
+        "aucroc_weighted": 0.5409806966781616
+    },
+    "language": "en"
+}

@@ -1,0 +1,15 @@
+{
+    "dataset": "deepeyenet",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_retrieval",
+    "metrics": {
+        "image_retrieval_recall@1": 0.00031847134232521057,
+        "text_retrieval_recall@1": 0.0,
+        "image_retrieval_recall@50": 0.012738853693008423,
+        "text_retrieval_recall@50": 0.011783439666032791,
+        "image_retrieval_recall@200": 0.05764331296086311,
+        "text_retrieval_recall@200": 0.05636942759156227
+    },
+    "language": "en"
+}

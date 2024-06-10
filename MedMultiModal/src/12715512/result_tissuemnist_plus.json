@@ -1,0 +1,27 @@
+{
+    "dataset": "tissuemnist_plus",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.6451565143824027,
+        "lp_acc5": 0.9789763113367175,
+        "lp_mean_per_class_recall": 0.5263635734208794,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.5852380394935608,
+        "map_weighted": 0.6963631510734558,
+        "acc_micro": 0.6451776623725891,
+        "acc_macro": 0.5263635516166687,
+        "acc_weighted": 0.6451776623725891,
+        "f1_micro": 0.6451776623725891,
+        "f1_macro": 0.5371298789978027,
+        "f1_weighted": 0.6325165033340454,
+        "aucroc_macro": 0.9112545251846313,
+        "aucroc_weighted": 0.9062592387199402
+    },
+    "language": "en"
+}

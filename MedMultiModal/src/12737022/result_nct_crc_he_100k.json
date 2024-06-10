@@ -1,0 +1,22 @@
+{
+    "dataset": "nck",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.19469445760303175,
+        "acc5": 0.5850307910942681,
+        "mean_per_class_recall": 0.125,
+        "map_macro": 0.1282653510570526,
+        "map_weighted": 0.15406930446624756,
+        "acc_micro": 0.19469445943832397,
+        "acc_macro": 0.125,
+        "acc_weighted": 0.19469445943832397,
+        "f1_micro": 0.19469445943832397,
+        "f1_macro": 0.04074147343635559,
+        "f1_weighted": 0.06345711648464203,
+        "aucroc_macro": 0.5040141940116882,
+        "aucroc_weighted": 0.5099808573722839
+    },
+    "language": "en"
+}

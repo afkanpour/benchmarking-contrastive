@@ -1,0 +1,27 @@
+{
+    "dataset": "lc25000_lung",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.996,
+        "lp_acc5": NaN,
+        "lp_mean_per_class_recall": 0.9959493577424694,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.9998928904533386,
+        "map_weighted": 0.9998942017555237,
+        "acc_micro": 0.9959999918937683,
+        "acc_macro": 0.995949387550354,
+        "acc_weighted": 0.9959999918937683,
+        "f1_micro": 0.9959999918937683,
+        "f1_macro": 0.995949387550354,
+        "f1_weighted": 0.9959999918937683,
+        "aucroc_macro": 0.9999471306800842,
+        "aucroc_weighted": 0.9999477863311768
+    },
+    "language": "en"
+}

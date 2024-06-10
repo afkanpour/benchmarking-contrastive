@@ -1,0 +1,15 @@
+{
+    "dataset": "mimic_cxr_single",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Clip_ImageUnlocked_7_ViT_B_16/checkpoints/epoch_6.pt",
+    "task": "zeroshot_retrieval",
+    "metrics": {
+        "image_retrieval_recall@1": 0.015907004475593567,
+        "text_retrieval_recall@1": 0.011012542061507702,
+        "image_retrieval_recall@50": 0.2823493480682373,
+        "text_retrieval_recall@50": 0.20740287005901337,
+        "image_retrieval_recall@200": 0.5463444590568542,
+        "text_retrieval_recall@200": 0.4337717890739441
+    },
+    "language": "en"
+}

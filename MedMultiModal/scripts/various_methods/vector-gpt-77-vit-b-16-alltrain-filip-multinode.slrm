@@ -1,0 +1,87 @@
+#!/bin/bash
+
+#SBATCH --job-name=multimodal_project
+#SBATCH --partition=a100
+#SBATCH --qos=a100_arashaf
+#SBATCH --time=72:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=1
+#SBATCH --gpus-per-task=4
+#SBATCH --cpus-per-gpu=4
+#SBATCH --mem-per-gpu=16GB
+#SBATCH --wait-all-nodes=1
+#SBATCH --export=ALL
+#SBATCH --output=../outputs/slurm-%j-%N.out
+#SBATCH --open-mode=append
+
+# load virtual environment
+source ~/Documents/envs/mmm/bin/activate
+
+cd ~/Documents/GitHub/Multimodal/MedMultiModal/src
+git checkout main
+export PYTHONPATH="."
+
+export NCCL_IB_DISABLE=1  # disable InfiniBand (the Vector cluster does not have it)
+export NCCL_DEBUG=WARN
+export NCCL_DEBUG_SUBSYS=WARN
+export NCCL_ASYNC_ERROR_HANDLING=1 # set to 1 for NCCL backend
+# export CUDA_LAUNCH_BLOCKING=1
+export TORCH_DISTRIBUTED_DEBUG=DETAIL
+export HYDRA_FULL_ERROR=1
+# export OMP_NUM_THREADS=12
+
+export MASTER_ADDR="$(hostname --fqdn)"
+export MASTER_PORT="$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1])')"
+# export PREV_SLURM_JOBID=12705650
+# export PREV_SLURM_JOBID=12705712
+export PREV_SLURM_JOBID=12705760
+
+# nvidia-smi
+echo MASTER_ADDR=${MASTER_ADDR}
+echo MASTER_PORT=${MASTER_PORT}
+echo SLURM_JOB_NODELIST=${SLURM_JOB_NODELIST}
+echo SLURM_JOBID=${SLURM_JOBID}
+echo PREV_SLURM_JOBID=${PREV_SLURM_JOBID}
+
+# move previous checkpoints to new location
+mv /checkpoint/$USER/$PREV_SLURM_JOBID/* /checkpoint/$USER/$SLURM_JOBID/
+echo NEW_CHKPT_FOLDER_CONTENTS:
+ls /checkpoint/$USER/$SLURM_JOBID/
+
+# “srun” executes the script <ntasks-per-node * nodes> times
+for index in $(seq 0 $(($SLURM_JOB_NUM_NODES-1))); do
+        srun --export=ALL -lN$index --mem-per-gpu=16GB --gres=gpu:$SLURM_GPUS_ON_NODE -c $SLURM_CPUS_ON_NODE -N 1 -n 1 -r $index bash -c \
+            "echo node_rank=$index; nvidia-smi; torchrun \
+            --nproc_per_node=$SLURM_GPUS_ON_NODE \
+            --node_rank=$index \
+            --nnodes=${SLURM_JOB_NUM_NODES} \
+            --master_addr=${MASTER_ADDR} \
+            --master_port=${MASTER_PORT} \
+            -m training.main \
+            --model ViT-B-16-FILIP \
+            --pretrained openai \
+            --filip \
+            --train-data /projects/multimodal/datasets/pmc_oa/train.jsonl::/projects/multimodal/datasets/Quilt_1M/quilt_1m_train.csv::/projects/multimodal/datasets/mimic_cxr/mimic_cxr_double_image_train.csv::/projects/aieng/multimodal/datasets/roco/cache/radiologytraindata.csv \
+            --train-num-samples 2769337 \
+            --dataset-type mixed \
+            --csv-separator , \
+            --val-data /projects/multimodal/datasets/pmc_oa/valid.jsonl \
+            --val-no-retrieval \
+            --batch-size 16 \
+            --accum-freq 4 \
+            --workers 4 \
+            --lr 5e-5 \
+            --lr-scheduler cosine \
+            --epochs 20 \
+            --warmup 0 \
+            --aug-cfg quilt_crop=True \
+            --wd 0.1 \
+            --name Methods_FIlip_ViT_B_16 \
+            --resume latest \
+            --gather-with-grad \
+            --logs /checkpoint/$USER/$SLURM_JOBID/ \
+            --zeroshot-frequency 1 \
+            --report-to wandb " &
+done
+
+wait

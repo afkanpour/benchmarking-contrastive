@@ -1,0 +1,27 @@
+{
+    "dataset": "organcmnist_plus",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.877921129503408,
+        "lp_acc5": 0.9918451801363194,
+        "lp_mean_per_class_recall": 0.8576248415484756,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.91780686378479,
+        "map_weighted": 0.9338769912719727,
+        "acc_micro": 0.8779211044311523,
+        "acc_macro": 0.8576248288154602,
+        "acc_weighted": 0.8779211044311523,
+        "f1_micro": 0.8779211044311523,
+        "f1_macro": 0.8583512902259827,
+        "f1_weighted": 0.8773778080940247,
+        "aucroc_macro": 0.9909539818763733,
+        "aucroc_weighted": 0.9918175339698792
+    },
+    "language": "en"
+}

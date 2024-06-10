@@ -1,0 +1,27 @@
+{
+    "dataset": "pad_ufes_20",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.6456521739130435,
+        "lp_acc5": 0.9891304347826086,
+        "lp_mean_per_class_recall": 0.49896701945265565,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.5513625741004944,
+        "map_weighted": 0.6755338907241821,
+        "acc_micro": 0.645652174949646,
+        "acc_macro": 0.4989669919013977,
+        "acc_weighted": 0.645652174949646,
+        "f1_micro": 0.645652174949646,
+        "f1_macro": 0.4988938868045807,
+        "f1_weighted": 0.6220810413360596,
+        "aucroc_macro": 0.8799276947975159,
+        "aucroc_weighted": 0.862058699131012
+    },
+    "language": "en"
+}

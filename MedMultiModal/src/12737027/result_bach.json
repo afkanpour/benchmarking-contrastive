@@ -1,0 +1,27 @@
+{
+    "dataset": "bach",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.2,
+        "lp_acc5": NaN,
+        "lp_mean_per_class_recall": 0.25,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.38332584500312805,
+        "map_weighted": 0.40254610776901245,
+        "acc_micro": 0.20000000298023224,
+        "acc_macro": 0.25,
+        "acc_weighted": 0.20000000298023224,
+        "f1_micro": 0.20000000298023224,
+        "f1_macro": 0.0833333358168602,
+        "f1_weighted": 0.06666667014360428,
+        "aucroc_macro": 0.5918235778808594,
+        "aucroc_weighted": 0.6143080592155457
+    },
+    "language": "en"
+}

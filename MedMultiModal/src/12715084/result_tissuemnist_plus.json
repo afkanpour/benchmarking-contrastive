@@ -1,0 +1,22 @@
+{
+    "dataset": "tissuemnist_plus",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.048561759729272416,
+        "acc5": 0.6571700507614213,
+        "mean_per_class_recall": 0.11757003365056092,
+        "map_macro": 0.1123914122581482,
+        "map_weighted": 0.17129194736480713,
+        "acc_micro": 0.04862521216273308,
+        "acc_macro": 0.11757002770900726,
+        "acc_weighted": 0.04862521216273308,
+        "f1_micro": 0.04862521216273308,
+        "f1_macro": 0.019853562116622925,
+        "f1_weighted": 0.016157696023583412,
+        "aucroc_macro": 0.45616650581359863,
+        "aucroc_weighted": 0.4336993098258972
+    },
+    "language": "en"
+}

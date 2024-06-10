@@ -1,0 +1,15 @@
+{
+    "dataset": "quilt_1m",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_retrieval",
+    "metrics": {
+        "image_retrieval_recall@1": 0.00014750350965186954,
+        "text_retrieval_recall@1": 7.375175482593477e-05,
+        "image_retrieval_recall@50": 0.004351353272795677,
+        "text_retrieval_recall@50": 0.003835091134533286,
+        "image_retrieval_recall@200": 0.016299137845635414,
+        "text_retrieval_recall@200": 0.014897854067385197
+    },
+    "language": "en"
+}

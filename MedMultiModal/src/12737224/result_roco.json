@@ -1,0 +1,15 @@
+{
+    "dataset": "roco",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_retrieval",
+    "metrics": {
+        "image_retrieval_recall@1": 0.00012230919674038887,
+        "text_retrieval_recall@1": 0.0,
+        "image_retrieval_recall@50": 0.006604696623980999,
+        "text_retrieval_recall@50": 0.00648238742724061,
+        "image_retrieval_recall@200": 0.02495107613503933,
+        "text_retrieval_recall@200": 0.02751956880092621
+    },
+    "language": "en"
+}

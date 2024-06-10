@@ -1,0 +1,22 @@
+{
+    "dataset": "pad_ufes_20",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.13478260869565217,
+        "acc5": 0.9739130434782609,
+        "mean_per_class_recall": 0.17023167147996152,
+        "map_macro": 0.15861523151397705,
+        "map_weighted": 0.25926220417022705,
+        "acc_micro": 0.12608695030212402,
+        "acc_macro": 0.1702316701412201,
+        "acc_weighted": 0.12608695030212402,
+        "f1_micro": 0.12608695030212402,
+        "f1_macro": 0.06735879927873611,
+        "f1_weighted": 0.08544496446847916,
+        "aucroc_macro": 0.4685552418231964,
+        "aucroc_weighted": 0.4541310667991638
+    },
+    "language": "en"
+}

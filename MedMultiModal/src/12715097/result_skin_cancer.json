@@ -1,0 +1,27 @@
+{
+    "dataset": "skin_cancer",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.8127808287568647,
+        "lp_acc5": 0.99900149775337,
+        "lp_mean_per_class_recall": 0.6099865761006802,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.6989585757255554,
+        "map_weighted": 0.8698396682739258,
+        "acc_micro": 0.8127808570861816,
+        "acc_macro": 0.6099866032600403,
+        "acc_weighted": 0.8127807974815369,
+        "f1_micro": 0.8127808570861816,
+        "f1_macro": 0.6366339325904846,
+        "f1_weighted": 0.8061122298240662,
+        "aucroc_macro": 0.9571662545204163,
+        "aucroc_weighted": 0.944128155708313
+    },
+    "language": "en"
+}

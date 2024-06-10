@@ -1,0 +1,27 @@
+{
+    "dataset": "vindr_mammo",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.9505169867060561,
+        "lp_acc5": 0.9940915805022157,
+        "lp_mean_per_class_recall": 0.1,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.10377009958028793,
+        "map_weighted": 0.915164589881897,
+        "acc_micro": 0.9505169987678528,
+        "acc_macro": 0.10000000149011612,
+        "acc_weighted": 0.9505169987678528,
+        "f1_micro": 0.9505169987678528,
+        "f1_macro": 0.09746308624744415,
+        "f1_weighted": 0.9264031648635864,
+        "aucroc_macro": 0.6400564312934875,
+        "aucroc_weighted": 0.5801717638969421
+    },
+    "language": "en"
+}

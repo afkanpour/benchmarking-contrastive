@@ -1,0 +1,15 @@
+{
+    "dataset": "mimic_cxr_single",
+    "model": "coca_ViT-B-32",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_ClipCoca_ViT_B_16/checkpoints/epoch_5.pt",
+    "task": "zeroshot_retrieval",
+    "metrics": {
+        "image_retrieval_recall@1": 0.010400733910501003,
+        "text_retrieval_recall@1": 0.0064239827916026115,
+        "image_retrieval_recall@50": 0.21688589453697205,
+        "text_retrieval_recall@50": 0.1425512433052063,
+        "image_retrieval_recall@200": 0.4665035307407379,
+        "text_retrieval_recall@200": 0.3368002474308014
+    },
+    "language": "en"
+}

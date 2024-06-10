@@ -1,0 +1,22 @@
+{
+    "dataset": "breastmnist_plus",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.7243589743589743,
+        "acc5": NaN,
+        "mean_per_class_recall": 0.4956140350877193,
+        "map_macro": 0.48281610012054443,
+        "map_weighted": 0.5880791544914246,
+        "acc_micro": 0.7243589758872986,
+        "acc_macro": 0.49561402201652527,
+        "acc_weighted": 0.7243589758872986,
+        "f1_micro": 0.7243589758872986,
+        "f1_macro": 0.42007434368133545,
+        "f1_weighted": 0.6139547824859619,
+        "aucroc_macro": 0.44883042573928833,
+        "aucroc_weighted": 0.44883039593696594
+    },
+    "language": "en"
+}

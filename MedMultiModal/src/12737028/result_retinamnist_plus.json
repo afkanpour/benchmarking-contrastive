@@ -1,0 +1,27 @@
+{
+    "dataset": "retinamnist_plus",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.4725,
+        "lp_acc5": NaN,
+        "lp_mean_per_class_recall": 0.2686965340858983,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.30096182227134705,
+        "map_weighted": 0.42848706245422363,
+        "acc_micro": 0.4724999964237213,
+        "acc_macro": 0.26869654655456543,
+        "acc_weighted": 0.4724999964237213,
+        "f1_micro": 0.4724999964237213,
+        "f1_macro": 0.2303144782781601,
+        "f1_weighted": 0.38340574502944946,
+        "aucroc_macro": 0.6505550146102905,
+        "aucroc_weighted": 0.6865656971931458
+    },
+    "language": "en"
+}

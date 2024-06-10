@@ -1,0 +1,27 @@
+{
+    "dataset": "pathmnist_plus",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.5409470752089136,
+        "lp_acc5": 0.9498607242339833,
+        "lp_mean_per_class_recall": 0.4583720619235964,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.4721345901489258,
+        "map_weighted": 0.5615137219429016,
+        "acc_micro": 0.5408077836036682,
+        "acc_macro": 0.4583720564842224,
+        "acc_weighted": 0.5408077836036682,
+        "f1_micro": 0.5408077836036682,
+        "f1_macro": 0.39985254406929016,
+        "f1_weighted": 0.48342418670654297,
+        "aucroc_macro": 0.8571071624755859,
+        "aucroc_weighted": 0.8787590861320496
+    },
+    "language": "en"
+}

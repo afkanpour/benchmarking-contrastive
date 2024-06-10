@@ -1,0 +1,27 @@
+{
+    "dataset": "pathmnist_plus",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.9103064066852368,
+        "lp_acc5": 0.9981894150417827,
+        "lp_mean_per_class_recall": 0.9085219628039501,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.9316441416740417,
+        "map_weighted": 0.9505810141563416,
+        "acc_micro": 0.9104456901550293,
+        "acc_macro": 0.9085218906402588,
+        "acc_weighted": 0.9104457497596741,
+        "f1_micro": 0.9104456901550293,
+        "f1_macro": 0.8980463743209839,
+        "f1_weighted": 0.9118890166282654,
+        "aucroc_macro": 0.9897335767745972,
+        "aucroc_weighted": 0.9926568865776062
+    },
+    "language": "en"
+}

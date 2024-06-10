@@ -1,0 +1,18 @@
+
+{
+    "embed_dim": 512,
+    "vision_cfg": {
+        "timm_model_name": "vit_base_patch32_clip_224.openai",
+        "timm_model_pretrained": true,
+        "timm_pool": "token",
+        "timm_proj": "linear",
+        "image_size": 224
+    },
+    "text_cfg": {
+        "hf_model_name": "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract",
+        "hf_tokenizer_name": "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract",
+        "hf_proj_type": "linear",
+        "hf_pooler_type": "cls_last_hidden_state_pooler",
+        "context_length": 256
+    }
+}

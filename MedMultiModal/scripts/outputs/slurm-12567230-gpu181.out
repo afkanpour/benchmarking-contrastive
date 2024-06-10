@@ -1,0 +1,876 @@
+Sat May 11 15:35:16 2024       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.105.17   Driver Version: 525.105.17   CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:B1:00.0 Off |                    0 |
+| N/A   31C    P0    63W / 500W |      0MiB / 81920MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+SLURM_ARRAY_JOB_ID=
+SLURM_JOBID=12567230
+PREV_SLURM_JOBID=12554410
+NEW_CHKPT_FOLDER:
+SLURM_JOB_FINISHED
+ViT-B-32-ALL-4
+2024-05-11,15:35:22 | INFO | Found latest resume checkpoint at /checkpoint/yaspar/12567230/ViT-B-32-ALL-4/checkpoints/epoch_6.pt.
+2024-05-11,15:35:22 | INFO | Running with a single process. Device cuda:0.
+2024-05-11,15:35:22 | INFO | Loading pretrained ViT-B-32 from OpenAI.
+/fs01/home/yaspar/Documents/GitHub/Multimodal/MedMultiModal/src/open_clip/transform.py:378: UserWarning: Unused augmentation cfg items, specify `use_timm` to use (['scale', 'quilt_crop', 'num_views']).
+  warnings.warn(f'Unused augmentation cfg items, specify `use_timm` to use ({list(aug_cfg_dict.keys())}).')
+2024-05-11,15:35:27 | INFO | Model:
+2024-05-11,15:35:27 | INFO | CLIP(
+  (visual): VisionTransformer(
+    (conv1): Conv2d(3, 768, kernel_size=(32, 32), stride=(32, 32), bias=False)
+    (patch_dropout): Identity()
+    (ln_pre): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    (transformer): Transformer(
+      (resblocks): ModuleList(
+        (0): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (1): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (2): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (3): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (4): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (5): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (6): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (7): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (8): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (9): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (10): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+        (11): ResidualAttentionBlock(
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ls_1): Identity()
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ls_2): Identity()
+        )
+      )
+    )
+    (ln_post): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  )
+  (transformer): Transformer(
+    (resblocks): ModuleList(
+      (0): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (1): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (2): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (3): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (4): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (5): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (6): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (7): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (8): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (9): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (10): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+      (11): ResidualAttentionBlock(
+        (ln_1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=512, out_features=512, bias=True)
+        )
+        (ls_1): Identity()
+        (ln_2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (mlp): Sequential(
+          (c_fc): Linear(in_features=512, out_features=2048, bias=True)
+          (gelu): QuickGELU()
+          (c_proj): Linear(in_features=2048, out_features=512, bias=True)
+        )
+        (ls_2): Identity()
+      )
+    )
+  )
+  (token_embedding): Embedding(49408, 512)
+  (ln_final): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+)
+2024-05-11,15:35:27 | INFO | Params:
+2024-05-11,15:35:27 | INFO |   accum_freq: 4
+2024-05-11,15:35:27 | INFO |   aug_cfg: {'quilt_crop': True}
+2024-05-11,15:35:27 | INFO |   batch_size: 1024
+2024-05-11,15:35:27 | INFO |   beta1: 0.9
+2024-05-11,15:35:27 | INFO |   beta2: 0.98
+2024-05-11,15:35:27 | INFO |   checkpoint_path: /checkpoint/yaspar/12567230/ViT-B-32-ALL-4/checkpoints
+2024-05-11,15:35:27 | INFO |   coca_caption_loss_weight: 2.0
+2024-05-11,15:35:27 | INFO |   coca_contrastive_loss_weight: 1.0
+2024-05-11,15:35:27 | INFO |   copy_codebase: False
+2024-05-11,15:35:27 | INFO |   csv_caption_key: title
+2024-05-11,15:35:27 | INFO |   csv_img_key: filepath
+2024-05-11,15:35:27 | INFO |   csv_img_root: 
+2024-05-11,15:35:27 | INFO |   csv_separator: ,
+2024-05-11,15:35:27 | INFO |   dataset_resampled: False
+2024-05-11,15:35:27 | INFO |   dataset_type: mixed
+2024-05-11,15:35:27 | INFO |   ddp_static_graph: False
+2024-05-11,15:35:27 | INFO |   debug: False
+2024-05-11,15:35:27 | INFO |   delete_previous_checkpoint: False
+2024-05-11,15:35:27 | INFO |   device: cuda:0
+2024-05-11,15:35:27 | INFO |   dist_backend: nccl
+2024-05-11,15:35:27 | INFO |   dist_url: env://
+2024-05-11,15:35:27 | INFO |   distill: False
+2024-05-11,15:35:27 | INFO |   distill_model: None
+2024-05-11,15:35:27 | INFO |   distill_pretrained: None
+2024-05-11,15:35:27 | INFO |   distributed: False
+2024-05-11,15:35:27 | INFO |   epochs: 20
+2024-05-11,15:35:27 | INFO |   epochs_cooldown: None
+2024-05-11,15:35:27 | INFO |   eps: 1e-06
+2024-05-11,15:35:27 | INFO |   force_custom_text: False
+2024-05-11,15:35:27 | INFO |   force_image_size: None
+2024-05-11,15:35:27 | INFO |   force_patch_dropout: None
+2024-05-11,15:35:27 | INFO |   force_quick_gelu: False
+2024-05-11,15:35:27 | INFO |   gather_with_grad: True
+2024-05-11,15:35:27 | INFO |   grad_checkpointing: False
+2024-05-11,15:35:27 | INFO |   grad_clip_norm: None
+2024-05-11,15:35:27 | INFO |   horovod: False
+2024-05-11,15:35:27 | INFO |   image_contrast: False
+2024-05-11,15:35:27 | INFO |   image_interpolation: None
+2024-05-11,15:35:27 | INFO |   image_mean: None
+2024-05-11,15:35:27 | INFO |   image_resize_mode: None
+2024-05-11,15:35:27 | INFO |   image_std: None
+2024-05-11,15:35:27 | INFO |   imagenet_v2: None
+2024-05-11,15:35:27 | INFO |   imagenet_val: None
+2024-05-11,15:35:27 | INFO |   local_loss: False
+2024-05-11,15:35:27 | INFO |   local_rank: 0
+2024-05-11,15:35:27 | INFO |   lock_image: False
+2024-05-11,15:35:27 | INFO |   lock_image_freeze_bn_stats: False
+2024-05-11,15:35:27 | INFO |   lock_image_unlocked_groups: 0
+2024-05-11,15:35:27 | INFO |   lock_text: False
+2024-05-11,15:35:27 | INFO |   lock_text_decoder: False
+2024-05-11,15:35:27 | INFO |   lock_text_freeze_layer_norm: False
+2024-05-11,15:35:27 | INFO |   lock_text_unlocked_layers: 0
+2024-05-11,15:35:27 | INFO |   log_every_n_steps: 100
+2024-05-11,15:35:27 | INFO |   log_level: 20
+2024-05-11,15:35:27 | INFO |   log_local: False
+2024-05-11,15:35:27 | INFO |   log_path: /checkpoint/yaspar/12567230/ViT-B-32-ALL-4/out.log
+2024-05-11,15:35:27 | INFO |   logs: /checkpoint/yaspar/12567230/
+2024-05-11,15:35:27 | INFO |   lr: 0.0002
+2024-05-11,15:35:27 | INFO |   lr_cooldown_end: 0.0
+2024-05-11,15:35:27 | INFO |   lr_cooldown_power: 1.0
+2024-05-11,15:35:27 | INFO |   lr_scheduler: cosine
+2024-05-11,15:35:27 | INFO |   mask_contrast: False
+2024-05-11,15:35:27 | INFO |   model: ViT-B-32
+2024-05-11,15:35:27 | INFO |   name: ViT-B-32-ALL-4
+2024-05-11,15:35:27 | INFO |   no_set_device_rank: False
+2024-05-11,15:35:27 | INFO |   pathmnist: False
+2024-05-11,15:35:27 | INFO |   precision: amp
+2024-05-11,15:35:27 | INFO |   pretrained: openai
+2024-05-11,15:35:27 | INFO |   pretrained_image: False
+2024-05-11,15:35:27 | INFO |   quilt_roi_selection_prob: 0.0
+2024-05-11,15:35:27 | INFO |   rank: 0
+2024-05-11,15:35:27 | INFO |   remote_sync: None
+2024-05-11,15:35:27 | INFO |   remote_sync_frequency: 300
+2024-05-11,15:35:27 | INFO |   remote_sync_protocol: s3
+2024-05-11,15:35:27 | INFO |   report_to: wandb
+2024-05-11,15:35:27 | INFO |   resume: /checkpoint/yaspar/12567230/ViT-B-32-ALL-4/checkpoints/epoch_6.pt
+2024-05-11,15:35:27 | INFO |   save_frequency: 1
+2024-05-11,15:35:27 | INFO |   save_most_recent: False
+2024-05-11,15:35:27 | INFO |   seed: 0
+2024-05-11,15:35:27 | INFO |   siglip: False
+2024-05-11,15:35:27 | INFO |   skip_scheduler: False
+2024-05-11,15:35:27 | INFO |   tensorboard: False
+2024-05-11,15:35:27 | INFO |   tensorboard_path: 
+2024-05-11,15:35:27 | INFO |   torchcompile: False
+2024-05-11,15:35:27 | INFO |   torchscript: False
+2024-05-11,15:35:27 | INFO |   trace: False
+2024-05-11,15:35:27 | INFO |   train_data: /projects/multimodal/datasets/pmc_oa/train.jsonl::/projects/multimodal/datasets/Quilt_1M/quilt_1m_train.csv::/projects/multimodal/datasets/mimic_cxr/mimic_cxr_double_image_train.csv::/projects/aieng/multimodal/datasets/roco/cache/radiologytraindata.csv
+2024-05-11,15:35:27 | INFO |   train_data_upsampling_factors: None
+2024-05-11,15:35:27 | INFO |   train_num_samples: 2769337
+2024-05-11,15:35:27 | INFO |   use_bn_sync: False
+2024-05-11,15:35:27 | INFO |   use_bnb_linear: None
+2024-05-11,15:35:27 | INFO |   val_data: /projects/multimodal/datasets/pmc_oa/valid.jsonl
+2024-05-11,15:35:27 | INFO |   val_frequency: 1
+2024-05-11,15:35:27 | INFO |   val_no_retrieval: True
+2024-05-11,15:35:27 | INFO |   val_num_samples: None
+2024-05-11,15:35:27 | INFO |   wandb: True
+2024-05-11,15:35:27 | INFO |   wandb_notes: 
+2024-05-11,15:35:27 | INFO |   wandb_offline: False
+2024-05-11,15:35:27 | INFO |   wandb_project_name: open-multi-modal
+2024-05-11,15:35:27 | INFO |   warmup: 0
+2024-05-11,15:35:27 | INFO |   wd: 0.1
+2024-05-11,15:35:27 | INFO |   workers: 4
+2024-05-11,15:35:27 | INFO |   world_size: 1
+2024-05-11,15:35:27 | INFO |   zeroshot_frequency: 1
+2024-05-11,15:35:33 | INFO | => resuming checkpoint '/checkpoint/yaspar/12567230/ViT-B-32-ALL-4/checkpoints/epoch_6.pt' (epoch 6)
+2024-05-11,15:36:12 | INFO | Loaded mixed dataset with 2755782 samples.
+2024-05-11,15:36:14 | INFO | Loaded mixed dataset with 164657 samples.
+wandb: Currently logged in as: yasaman-parhizkar (vector-institute-aieng). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.17.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /fs01/home/yaspar/Documents/GitHub/Multimodal/MedMultiModal/src/wandb/run-20240511_153616-ViT-B-32-ALL-4
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run ViT-B-32-ALL-4
+wandb: ⭐️ View project at https://wandb.ai/vector-institute-aieng/open-multi-modal
+wandb: 🚀 View run at https://wandb.ai/vector-institute-aieng/open-multi-modal/runs/ViT-B-32-ALL-4
+wandb: WARNING Saving files without folders. If you want to preserve subdirectories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")
+2024-05-11,15:36:28 | INFO | Eval Epoch: 0 [1024 / 164657]	Clip Loss: 4.320329	
+2024-05-11,15:39:04 | INFO | Eval Epoch: 0 [103424 / 164657]	Clip Loss: 3.930772	
+2024-05-11,15:41:02 | INFO | Eval Epoch: 0 clip_val_loss: 3.9210	epoch: 0.0000	num_samples: 164657.0000
+2024-05-11,15:41:02 | INFO | Start epoch 6
+2024-05-11,15:41:28 | INFO | Train Epoch: 6 [   4096/2755782 (0%)] Data (t): 22.136 Batch (t): 26.813, 152.761/s, 152.761/s/gpu LR: 0.000159 Logit Scale: 93.649 Contrastive_loss: 2.2938 (2.2938) Loss: 2.2938 (2.2938)
+2024-05-11,15:42:42 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+2024-05-11,15:49:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-11,15:58:12 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_78946.jpg
+2024-05-11,16:04:19 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-11,16:04:47 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+2024-05-11,16:10:56 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_35395.jpg
+2024-05-11,16:12:51 | INFO | Train Epoch: 6 [ 413696/2755782 (15%)] Data (t): 12.416 Batch (t): 18.827, 229.096/s, 229.096/s/gpu LR: 0.000157 Logit Scale: 93.704 Contrastive_loss: 2.3118 (2.3028) Loss: 2.3118 (2.3028)
+2024-05-11,16:23:53 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-11,16:25:48 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-11,16:28:50 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63050.jpg
+2024-05-11,16:30:15 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+2024-05-11,16:43:20 | INFO | Train Epoch: 6 [ 823296/2755782 (30%)] Data (t): 10.257 Batch (t): 18.291, 226.603/s, 226.603/s/gpu LR: 0.000155 Logit Scale: 93.583 Contrastive_loss: 2.3985 (2.3347) Loss: 2.3985 (2.3347)
+2024-05-11,16:50:43 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+2024-05-11,17:03:19 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-11,17:14:01 | INFO | Train Epoch: 6 [1232896/2755782 (45%)] Data (t): 7.935 Batch (t): 18.407, 219.043/s, 219.043/s/gpu LR: 0.000153 Logit Scale: 93.466 Contrastive_loss: 2.4327 (2.3592) Loss: 2.4327 (2.3592)
+2024-05-11,17:15:32 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-11,17:27:10 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-11,17:45:35 | INFO | Train Epoch: 6 [1642496/2755782 (60%)] Data (t): 7.923 Batch (t): 18.944, 211.513/s, 211.513/s/gpu LR: 0.000151 Logit Scale: 93.380 Contrastive_loss: 2.4015 (2.3677) Loss: 2.4015 (2.3677)
+2024-05-11,17:52:19 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-11,17:59:51 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+2024-05-11,18:02:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+2024-05-11,18:16:11 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-11,18:17:20 | INFO | Train Epoch: 6 [2052096/2755782 (75%)] Data (t): 7.973 Batch (t): 19.046, 234.209/s, 234.209/s/gpu LR: 0.000149 Logit Scale: 93.280 Contrastive_loss: 2.3607 (2.3665) Loss: 2.3607 (2.3665)
+2024-05-11,18:28:09 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-11,18:29:13 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_22299.jpg
+2024-05-11,18:31:22 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24535.jpg
+2024-05-11,18:33:45 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_70505.jpg
+2024-05-11,18:39:02 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-11,18:41:51 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-11,18:49:19 | INFO | Train Epoch: 6 [2461696/2755782 (89%)] Data (t): 8.045 Batch (t): 19.189, 216.574/s, 216.574/s/gpu LR: 0.000147 Logit Scale: 93.194 Contrastive_loss: 2.3761 (2.3679) Loss: 2.3761 (2.3679)
+2024-05-11,18:49:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-11,18:50:49 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-11,19:04:05 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_25337.jpg
+2024-05-11,19:04:40 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-11,19:12:03 | INFO | Train Epoch: 6 [2752512/2755782 (100%)] Data (t): 8.056 Batch (t): 19.214, 215.917/s, 215.917/s/gpu LR: 0.000145 Logit Scale: 93.136 Contrastive_loss: 2.3110 (2.3608) Loss: 2.3110 (2.3608)
+2024-05-11,19:12:30 | INFO | Eval Epoch: 7 [1024 / 164657]	Clip Loss: 4.235190	
+2024-05-11,19:15:46 | INFO | Eval Epoch: 7 [103424 / 164657]	Clip Loss: 3.829506	
+2024-05-11,19:17:48 | INFO | Eval Epoch: 7 clip_val_loss: 3.8281	epoch: 7.0000	num_samples: 164657.0000
+2024-05-11,19:17:54 | INFO | Start epoch 7
+2024-05-11,19:18:20 | INFO | Train Epoch: 7 [   4096/2755782 (0%)] Data (t): 22.284 Batch (t): 26.077, 157.076/s, 157.076/s/gpu LR: 0.000145 Logit Scale: 93.133 Contrastive_loss: 2.0138 (2.0138) Loss: 2.0138 (2.0138)
+2024-05-11,19:23:11 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-11,19:31:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-11,19:34:16 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-11,19:50:17 | INFO | Train Epoch: 7 [ 413696/2755782 (15%)] Data (t): 10.990 Batch (t): 19.167, 223.018/s, 223.018/s/gpu LR: 0.000143 Logit Scale: 93.241 Contrastive_loss: 1.9965 (2.0052) Loss: 1.9965 (2.0052)
+2024-05-11,20:01:51 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+2024-05-11,20:02:22 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-11,20:12:36 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-11,20:21:33 | INFO | Train Epoch: 7 [ 823296/2755782 (30%)] Data (t): 6.516 Batch (t): 18.765, 224.513/s, 224.513/s/gpu LR: 0.000141 Logit Scale: 93.170 Contrastive_loss: 2.0908 (2.0337) Loss: 2.0908 (2.0337)
+2024-05-11,20:23:58 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-11,20:52:51 | INFO | Train Epoch: 7 [1232896/2755782 (45%)] Data (t): 8.841 Batch (t): 18.779, 224.887/s, 224.887/s/gpu LR: 0.000139 Logit Scale: 93.094 Contrastive_loss: 2.0866 (2.0469) Loss: 2.0866 (2.0469)
+2024-05-11,20:54:33 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_78946.jpg
+2024-05-11,20:55:26 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-11,20:56:36 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+2024-05-11,20:59:07 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24535.jpg
+2024-05-11,21:01:09 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+2024-05-11,21:24:10 | INFO | Train Epoch: 7 [1642496/2755782 (60%)] Data (t): 7.059 Batch (t): 18.784, 229.304/s, 229.304/s/gpu LR: 0.000137 Logit Scale: 93.025 Contrastive_loss: 2.0337 (2.0443) Loss: 2.0337 (2.0443)
+2024-05-11,21:40:04 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-11,21:44:13 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-11,21:55:29 | INFO | Train Epoch: 7 [2052096/2755782 (75%)] Data (t): 7.352 Batch (t): 18.799, 211.151/s, 211.151/s/gpu LR: 0.000135 Logit Scale: 92.960 Contrastive_loss: 1.9917 (2.0355) Loss: 1.9917 (2.0355)
+2024-05-11,21:56:06 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+2024-05-11,22:05:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63050.jpg
+2024-05-11,22:07:43 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-11,22:11:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+2024-05-11,22:13:23 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+2024-05-11,22:19:05 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-11,22:22:38 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_70505.jpg
+2024-05-11,22:27:02 | INFO | Train Epoch: 7 [2461696/2755782 (89%)] Data (t): 7.428 Batch (t): 18.925, 219.821/s, 219.821/s/gpu LR: 0.000132 Logit Scale: 92.885 Contrastive_loss: 2.0442 (2.0368) Loss: 2.0442 (2.0368)
+2024-05-11,22:31:16 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-11,22:32:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_25337.jpg
+2024-05-11,22:36:07 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_35395.jpg
+2024-05-11,22:39:28 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-11,22:41:23 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-11,22:42:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-11,22:47:59 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_22299.jpg
+2024-05-11,22:49:41 | INFO | Train Epoch: 7 [2752512/2755782 (100%)] Data (t): 5.108 Batch (t): 19.142, 244.221/s, 244.221/s/gpu LR: 0.000131 Logit Scale: 92.875 Contrastive_loss: 2.0812 (2.0423) Loss: 2.0812 (2.0423)
+2024-05-11,22:49:54 | INFO | Eval Epoch: 8 [1024 / 164657]	Clip Loss: 4.022234	
+2024-05-11,22:53:11 | INFO | Eval Epoch: 8 [103424 / 164657]	Clip Loss: 3.683911	
+2024-05-11,22:55:10 | INFO | Eval Epoch: 8 clip_val_loss: 3.6791	epoch: 8.0000	num_samples: 164657.0000
+2024-05-11,22:55:16 | INFO | Start epoch 8
+2024-05-11,22:55:41 | INFO | Train Epoch: 8 [   4096/2755782 (0%)] Data (t): 21.301 Batch (t): 24.983, 163.952/s, 163.952/s/gpu LR: 0.000131 Logit Scale: 92.873 Contrastive_loss: 1.6737 (1.6737) Loss: 1.6737 (1.6737)
+2024-05-11,22:57:10 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-11,23:00:03 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_70505.jpg
+2024-05-11,23:00:58 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-11,23:21:48 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-11,23:27:44 | INFO | Train Epoch: 8 [ 413696/2755782 (15%)] Data (t): 12.632 Batch (t): 19.232, 210.810/s, 210.810/s/gpu LR: 0.000129 Logit Scale: 93.012 Contrastive_loss: 1.7601 (1.7169) Loss: 1.7601 (1.7169)
+2024-05-11,23:35:36 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-11,23:45:18 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+2024-05-11,23:48:54 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24535.jpg
+2024-05-11,23:49:04 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+2024-05-11,23:59:09 | INFO | Train Epoch: 8 [ 823296/2755782 (30%)] Data (t): 7.641 Batch (t): 18.850, 219.512/s, 219.512/s/gpu LR: 0.000126 Logit Scale: 92.985 Contrastive_loss: 1.7522 (1.7287) Loss: 1.7522 (1.7287)
+2024-05-12,00:02:28 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+2024-05-12,00:22:26 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+2024-05-12,00:23:37 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+2024-05-12,00:30:38 | INFO | Train Epoch: 8 [1232896/2755782 (45%)] Data (t): 4.368 Batch (t): 18.892, 231.159/s, 231.159/s/gpu LR: 0.000124 Logit Scale: 92.948 Contrastive_loss: 1.8084 (1.7486) Loss: 1.8084 (1.7486)
+2024-05-12,00:36:36 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-12,00:44:24 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-12,01:02:21 | INFO | Train Epoch: 8 [1642496/2755782 (60%)] Data (t): 4.184 Batch (t): 19.027, 223.547/s, 223.547/s/gpu LR: 0.000122 Logit Scale: 92.932 Contrastive_loss: 1.7759 (1.7540) Loss: 1.7759 (1.7540)
+2024-05-12,01:08:24 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63050.jpg
+2024-05-12,01:15:30 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-12,01:22:26 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+2024-05-12,01:22:53 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-12,01:23:51 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_78946.jpg
+2024-05-12,01:25:11 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_22299.jpg
+2024-05-12,01:31:42 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-12,01:33:54 | INFO | Train Epoch: 8 [2052096/2755782 (75%)] Data (t): 4.162 Batch (t): 18.933, 228.889/s, 228.889/s/gpu LR: 0.000120 Logit Scale: 92.895 Contrastive_loss: 1.7611 (1.7552) Loss: 1.7611 (1.7552)
+2024-05-12,01:37:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-12,01:38:27 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-12,01:43:45 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-12,01:48:23 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-12,01:53:10 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-12,01:56:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_25337.jpg
+2024-05-12,02:04:55 | INFO | Train Epoch: 8 [2461696/2755782 (89%)] Data (t): 4.093 Batch (t): 18.605, 217.477/s, 217.477/s/gpu LR: 0.000117 Logit Scale: 92.881 Contrastive_loss: 1.7700 (1.7573) Loss: 1.7700 (1.7573)
+2024-05-12,02:11:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_35395.jpg
+2024-05-12,02:21:34 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-12,02:26:38 | INFO | Train Epoch: 8 [2752512/2755782 (100%)] Data (t): 4.034 Batch (t): 18.357, 238.456/s, 238.456/s/gpu LR: 0.000116 Logit Scale: 92.868 Contrastive_loss: 1.7620 (1.7579) Loss: 1.7620 (1.7579)
+2024-05-12,02:26:49 | INFO | Eval Epoch: 9 [1024 / 164657]	Clip Loss: 4.125463	
+2024-05-12,02:29:53 | INFO | Eval Epoch: 9 [103424 / 164657]	Clip Loss: 3.863400	
+2024-05-12,02:31:43 | INFO | Eval Epoch: 9 clip_val_loss: 3.8675	epoch: 9.0000	num_samples: 164657.0000
+2024-05-12,02:31:48 | INFO | Start epoch 9
+2024-05-12,02:32:13 | INFO | Train Epoch: 9 [   4096/2755782 (0%)] Data (t): 21.544 Batch (t): 24.924, 164.337/s, 164.337/s/gpu LR: 0.000116 Logit Scale: 92.867 Contrastive_loss: 1.5182 (1.5182) Loss: 1.5182 (1.5182)
+2024-05-12,02:49:57 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-12,02:50:27 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-12,02:50:48 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24535.jpg
+2024-05-12,03:00:44 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-12,03:03:14 | INFO | Train Epoch: 9 [ 413696/2755782 (15%)] Data (t): 15.123 Batch (t): 18.613, 224.479/s, 224.479/s/gpu LR: 0.000113 Logit Scale: 93.094 Contrastive_loss: 1.4868 (1.5025) Loss: 1.4868 (1.5025)
+2024-05-12,03:10:58 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-12,03:13:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-12,03:33:46 | INFO | Train Epoch: 9 [ 823296/2755782 (30%)] Data (t): 14.925 Batch (t): 18.318, 237.730/s, 237.730/s/gpu LR: 0.000111 Logit Scale: 93.129 Contrastive_loss: 1.5096 (1.5049) Loss: 1.5096 (1.5049)
+2024-05-12,03:33:57 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-12,03:34:08 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+2024-05-12,03:34:34 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-12,03:42:36 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-12,03:49:54 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_22299.jpg
+2024-05-12,03:50:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-12,03:54:43 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+2024-05-12,03:55:28 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+2024-05-12,03:55:33 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+2024-05-12,04:04:04 | INFO | Train Epoch: 9 [1232896/2755782 (45%)] Data (t): 14.791 Batch (t): 18.185, 214.105/s, 214.105/s/gpu LR: 0.000109 Logit Scale: 93.129 Contrastive_loss: 1.5813 (1.5240) Loss: 1.5813 (1.5240)
+2024-05-12,04:20:02 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-12,04:20:11 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-12,04:20:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-12,04:22:23 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+2024-05-12,04:24:56 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63050.jpg
+2024-05-12,04:27:40 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+2024-05-12,04:33:52 | INFO | Train Epoch: 9 [1642496/2755782 (60%)] Data (t): 14.493 Batch (t): 17.880, 243.528/s, 243.528/s/gpu LR: 0.000106 Logit Scale: 93.143 Contrastive_loss: 1.5359 (1.5264) Loss: 1.5359 (1.5264)
+2024-05-12,04:34:15 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-12,04:41:37 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-12,04:41:50 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-12,04:45:12 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_78946.jpg
+2024-05-12,05:03:16 | INFO | Train Epoch: 9 [2052096/2755782 (75%)] Data (t): 10.594 Batch (t): 17.635, 223.942/s, 223.942/s/gpu LR: 0.000104 Logit Scale: 93.155 Contrastive_loss: 1.5438 (1.5293) Loss: 1.5438 (1.5293)
+2024-05-12,05:23:28 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_35395.jpg
+2024-05-12,05:30:17 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_70505.jpg
+2024-05-12,05:32:50 | INFO | Train Epoch: 9 [2461696/2755782 (89%)] Data (t): 4.661 Batch (t): 17.738, 235.399/s, 235.399/s/gpu LR: 0.000102 Logit Scale: 93.175 Contrastive_loss: 1.5052 (1.5258) Loss: 1.5052 (1.5258)
+2024-05-12,05:35:06 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_25337.jpg
+2024-05-12,05:53:36 | INFO | Train Epoch: 9 [2752512/2755782 (100%)] Data (t): 8.868 Batch (t): 17.554, 246.694/s, 246.694/s/gpu LR: 0.000100 Logit Scale: 93.230 Contrastive_loss: 1.5075 (1.5235) Loss: 1.5075 (1.5235)
+2024-05-12,05:54:00 | INFO | Eval Epoch: 10 [1024 / 164657]	Clip Loss: 4.095371	
+2024-05-12,05:56:53 | INFO | Eval Epoch: 10 [103424 / 164657]	Clip Loss: 3.831411	
+2024-05-12,05:58:31 | INFO | Eval Epoch: 10 clip_val_loss: 3.8548	epoch: 10.0000	num_samples: 164657.0000
+2024-05-12,05:58:36 | INFO | Start epoch 10
+2024-05-12,05:59:00 | INFO | Train Epoch: 10 [   4096/2755782 (0%)] Data (t): 20.112 Batch (t): 23.505, 174.260/s, 174.260/s/gpu LR: 0.000100 Logit Scale: 93.231 Contrastive_loss: 1.2589 (1.2589) Loss: 1.2589 (1.2589)
+2024-05-12,06:19:10 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-12,06:19:22 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-12,06:28:17 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_25337.jpg
+2024-05-12,06:28:46 | INFO | Train Epoch: 10 [ 413696/2755782 (15%)] Data (t): 14.402 Batch (t): 17.868, 239.392/s, 239.392/s/gpu LR: 0.000098 Logit Scale: 93.481 Contrastive_loss: 1.2713 (1.2651) Loss: 1.2713 (1.2651)
+2024-05-12,06:39:57 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+2024-05-12,06:45:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+2024-05-12,06:53:15 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_22299.jpg
+2024-05-12,06:57:58 | INFO | Train Epoch: 10 [ 823296/2755782 (30%)] Data (t): 14.112 Batch (t): 17.521, 241.066/s, 241.066/s/gpu LR: 0.000095 Logit Scale: 93.577 Contrastive_loss: 1.3239 (1.2847) Loss: 1.3239 (1.2847)
+2024-05-12,06:58:19 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-12,07:00:18 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_78946.jpg
+2024-05-12,07:01:24 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-12,07:02:14 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-12,07:03:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+2024-05-12,07:15:50 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-12,07:26:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-12,07:26:45 | INFO | Train Epoch: 10 [1232896/2755782 (45%)] Data (t): 13.859 Batch (t): 17.262, 237.069/s, 237.069/s/gpu LR: 0.000093 Logit Scale: 93.621 Contrastive_loss: 1.3075 (1.2904) Loss: 1.3075 (1.2904)
+2024-05-12,07:28:13 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-12,07:28:25 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63050.jpg
+2024-05-12,07:55:41 | INFO | Train Epoch: 10 [1642496/2755782 (60%)] Data (t): 13.953 Batch (t): 17.361, 232.429/s, 232.429/s/gpu LR: 0.000091 Logit Scale: 93.698 Contrastive_loss: 1.2734 (1.2870) Loss: 1.2734 (1.2870)
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-12,08:04:12 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-12,08:10:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-12,08:20:48 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_35395.jpg
+2024-05-12,08:22:14 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-12,08:24:12 | INFO | Train Epoch: 10 [2052096/2755782 (75%)] Data (t): 13.695 Batch (t): 17.109, 237.394/s, 237.394/s/gpu LR: 0.000088 Logit Scale: 93.736 Contrastive_loss: 1.3609 (1.2993) Loss: 1.3609 (1.2993)
+2024-05-12,08:36:28 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+2024-05-12,08:36:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-12,08:41:36 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24535.jpg
+2024-05-12,08:46:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+2024-05-12,08:48:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-12,08:53:03 | INFO | Train Epoch: 10 [2461696/2755782 (89%)] Data (t): 13.912 Batch (t): 17.314, 247.878/s, 247.878/s/gpu LR: 0.000086 Logit Scale: 93.810 Contrastive_loss: 1.2812 (1.2967) Loss: 1.2812 (1.2967)
+2024-05-12,08:53:05 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_70505.jpg
+2024-05-12,08:55:22 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+2024-05-12,09:00:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+2024-05-12,09:05:48 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-12,09:13:33 | INFO | Train Epoch: 10 [2752512/2755782 (100%)] Data (t): 13.911 Batch (t): 17.323, 226.666/s, 226.666/s/gpu LR: 0.000084 Logit Scale: 93.878 Contrastive_loss: 1.3489 (1.3032) Loss: 1.3489 (1.3032)
+2024-05-12,09:13:55 | INFO | Eval Epoch: 11 [1024 / 164657]	Clip Loss: 4.166953	
+2024-05-12,09:16:36 | INFO | Eval Epoch: 11 [103424 / 164657]	Clip Loss: 3.909456	
+2024-05-12,09:18:16 | INFO | Eval Epoch: 11 clip_val_loss: 3.9458	epoch: 11.0000	num_samples: 164657.0000
+2024-05-12,09:18:21 | INFO | Start epoch 11
+2024-05-12,09:18:45 | INFO | Train Epoch: 11 [   4096/2755782 (0%)] Data (t): 20.234 Batch (t): 24.061, 170.231/s, 170.231/s/gpu LR: 0.000084 Logit Scale: 93.878 Contrastive_loss: 1.0872 (1.0872) Loss: 1.0872 (1.0872)
+2024-05-12,09:35:52 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-12,09:38:17 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_70505.jpg
+2024-05-12,09:39:42 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+2024-05-12,09:47:23 | INFO | Train Epoch: 11 [ 413696/2755782 (15%)] Data (t): 10.858 Batch (t): 17.184, 251.537/s, 251.537/s/gpu LR: 0.000082 Logit Scale: 94.179 Contrastive_loss: 1.0704 (1.0788) Loss: 1.0704 (1.0788)
+2024-05-12,09:49:24 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+2024-05-12,09:56:03 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-12,09:56:59 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_25337.jpg
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-12,10:15:51 | INFO | Train Epoch: 11 [ 823296/2755782 (30%)] Data (t): 9.103 Batch (t): 17.080, 228.843/s, 228.843/s/gpu LR: 0.000080 Logit Scale: 94.300 Contrastive_loss: 1.1958 (1.1178) Loss: 1.1958 (1.1178)
+2024-05-12,10:16:58 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63050.jpg
+2024-05-12,10:34:16 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+2024-05-12,10:45:01 | INFO | Train Epoch: 11 [1232896/2755782 (45%)] Data (t): 7.258 Batch (t): 17.497, 235.875/s, 235.875/s/gpu LR: 0.000077 Logit Scale: 94.435 Contrastive_loss: 1.1337 (1.1218) Loss: 1.1337 (1.1218)
+2024-05-12,10:47:16 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+2024-05-12,10:50:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+2024-05-12,11:09:36 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-12,11:14:15 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-12,11:15:43 | INFO | Train Epoch: 11 [1642496/2755782 (60%)] Data (t): 7.808 Batch (t): 18.419, 214.626/s, 214.626/s/gpu LR: 0.000075 Logit Scale: 94.520 Contrastive_loss: 1.1658 (1.1306) Loss: 1.1658 (1.1306)
+2024-05-12,11:26:05 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-12,11:30:10 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-12,11:31:23 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-12,11:35:32 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_22299.jpg
+2024-05-12,11:38:02 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_35395.jpg
+2024-05-12,11:45:18 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+2024-05-12,11:46:06 | INFO | Train Epoch: 11 [2052096/2755782 (75%)] Data (t): 8.467 Batch (t): 18.235, 223.500/s, 223.500/s/gpu LR: 0.000073 Logit Scale: 94.630 Contrastive_loss: 1.1255 (1.1297) Loss: 1.1255 (1.1297)
+2024-05-12,11:46:07 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-12,11:51:25 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-12,11:53:17 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-12,11:56:26 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-12,11:57:48 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-12,12:11:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_78946.jpg
+2024-05-12,12:14:15 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-12,12:16:58 | INFO | Train Epoch: 11 [2461696/2755782 (89%)] Data (t): 10.632 Batch (t): 18.519, 225.187/s, 225.187/s/gpu LR: 0.000071 Logit Scale: 94.749 Contrastive_loss: 1.1400 (1.1312) Loss: 1.1400 (1.1312)
+2024-05-12,12:18:28 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24535.jpg
+2024-05-12,12:20:10 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+2024-05-12,12:31:57 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-12,12:38:56 | INFO | Train Epoch: 11 [2752512/2755782 (100%)] Data (t): 11.384 Batch (t): 18.557, 210.024/s, 210.024/s/gpu LR: 0.000069 Logit Scale: 94.816 Contrastive_loss: 1.1508 (1.1336) Loss: 1.1508 (1.1336)
+2024-05-12,12:39:22 | INFO | Eval Epoch: 12 [1024 / 164657]	Clip Loss: 4.336790	
+2024-05-12,12:42:31 | INFO | Eval Epoch: 12 [103424 / 164657]	Clip Loss: 4.043556	
+2024-05-12,12:44:19 | INFO | Eval Epoch: 12 clip_val_loss: 4.0908	epoch: 12.0000	num_samples: 164657.0000
+2024-05-12,12:44:25 | INFO | Start epoch 12
+2024-05-12,12:44:51 | INFO | Train Epoch: 12 [   4096/2755782 (0%)] Data (t): 22.139 Batch (t): 25.681, 159.497/s, 159.497/s/gpu LR: 0.000069 Logit Scale: 94.819 Contrastive_loss: 0.96578 (0.96578) Loss: 0.96578 (0.96578)
+2024-05-12,12:51:10 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-12,12:57:24 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+2024-05-12,12:58:58 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24535.jpg
+2024-05-12,13:03:15 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63050.jpg
+2024-05-12,13:04:14 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-12,13:08:30 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_70505.jpg
+2024-05-12,13:09:05 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_35395.jpg
+2024-05-12,13:09:37 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+2024-05-12,13:10:11 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+2024-05-12,13:12:16 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-12,13:16:15 | INFO | Train Epoch: 12 [ 413696/2755782 (15%)] Data (t): 12.218 Batch (t): 18.839, 212.715/s, 212.715/s/gpu LR: 0.000067 Logit Scale: 95.018 Contrastive_loss: 0.99031 (0.97804) Loss: 0.99031 (0.97804)
+2024-05-12,13:19:12 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-12,13:26:30 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-12,13:34:54 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-12,13:39:14 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-12,13:46:48 | INFO | Train Epoch: 12 [ 823296/2755782 (30%)] Data (t): 11.214 Batch (t): 18.331, 217.143/s, 217.143/s/gpu LR: 0.000065 Logit Scale: 95.058 Contrastive_loss: 0.97560 (0.97723) Loss: 0.97560 (0.97723)
+2024-05-12,13:50:20 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-12,14:08:49 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_78946.jpg
+2024-05-12,14:17:26 | INFO | Train Epoch: 12 [1232896/2755782 (45%)] Data (t): 11.259 Batch (t): 18.380, 238.407/s, 238.407/s/gpu LR: 0.000063 Logit Scale: 95.150 Contrastive_loss: 1.0227 (0.98859) Loss: 1.0227 (0.98859)
+2024-05-12,14:19:21 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-12,14:20:50 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+2024-05-12,14:30:08 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-12,14:46:07 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-12,14:48:12 | INFO | Train Epoch: 12 [1642496/2755782 (60%)] Data (t): 11.323 Batch (t): 18.465, 221.887/s, 221.887/s/gpu LR: 0.000060 Logit Scale: 95.159 Contrastive_loss: 1.0012 (0.99110) Loss: 1.0012 (0.99110)
+2024-05-12,14:49:00 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+2024-05-12,14:54:22 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_22299.jpg
+2024-05-12,15:09:37 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-12,15:10:38 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+2024-05-12,15:19:02 | INFO | Train Epoch: 12 [2052096/2755782 (75%)] Data (t): 11.369 Batch (t): 18.498, 234.915/s, 234.915/s/gpu LR: 0.000058 Logit Scale: 95.217 Contrastive_loss: 0.97637 (0.98865) Loss: 0.97637 (0.98865)
+2024-05-12,15:20:39 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-12,15:50:05 | INFO | Train Epoch: 12 [2461696/2755782 (89%)] Data (t): 11.466 Batch (t): 18.627, 202.683/s, 202.683/s/gpu LR: 0.000056 Logit Scale: 95.261 Contrastive_loss: 1.0429 (0.99640) Loss: 1.0429 (0.99640)
+2024-05-12,15:54:12 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-12,16:00:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-12,16:11:52 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_25337.jpg
+2024-05-12,16:12:27 | INFO | Train Epoch: 12 [2752512/2755782 (100%)] Data (t): 11.666 Batch (t): 18.897, 219.950/s, 219.950/s/gpu LR: 0.000055 Logit Scale: 95.308 Contrastive_loss: 1.0148 (0.99870) Loss: 1.0148 (0.99870)
+2024-05-12,16:12:53 | INFO | Eval Epoch: 13 [1024 / 164657]	Clip Loss: 4.462178	
+2024-05-12,16:16:09 | INFO | Eval Epoch: 13 [103424 / 164657]	Clip Loss: 4.155847	
+2024-05-12,16:18:06 | INFO | Eval Epoch: 13 clip_val_loss: 4.2101	epoch: 13.0000	num_samples: 164657.0000
+2024-05-12,16:18:12 | INFO | Start epoch 13
+2024-05-12,16:18:37 | INFO | Train Epoch: 13 [   4096/2755782 (0%)] Data (t): 21.893 Batch (t): 25.670, 159.562/s, 159.562/s/gpu LR: 0.000055 Logit Scale: 95.310 Contrastive_loss: 0.83893 (0.83893) Loss: 0.83893 (0.83893)
+2024-05-12,16:33:48 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-12,16:37:53 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_22299.jpg
+2024-05-12,16:40:13 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+2024-05-12,16:43:34 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+2024-05-12,16:50:11 | INFO | Train Epoch: 13 [ 413696/2755782 (15%)] Data (t): 12.628 Batch (t): 18.934, 217.745/s, 217.745/s/gpu LR: 0.000053 Logit Scale: 95.591 Contrastive_loss: 0.83590 (0.83741) Loss: 0.83590 (0.83741)
+2024-05-12,16:58:30 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_35395.jpg
+2024-05-12,17:03:03 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-12,17:14:44 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-12,17:16:56 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+2024-05-12,17:21:12 | INFO | Train Epoch: 13 [ 823296/2755782 (30%)] Data (t): 11.451 Batch (t): 18.608, 221.638/s, 221.638/s/gpu LR: 0.000050 Logit Scale: 95.702 Contrastive_loss: 0.83612 (0.83698) Loss: 0.83612 (0.83698)
+2024-05-12,17:31:06 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-12,17:31:11 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+2024-05-12,17:35:44 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-12,17:52:26 | INFO | Train Epoch: 13 [1232896/2755782 (45%)] Data (t): 11.551 Batch (t): 18.745, 223.754/s, 223.754/s/gpu LR: 0.000048 Logit Scale: 95.806 Contrastive_loss: 0.80828 (0.82981) Loss: 0.80828 (0.82981)
+2024-05-12,18:09:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+2024-05-12,18:12:36 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_70505.jpg
+2024-05-12,18:13:39 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_78946.jpg
+2024-05-12,18:17:19 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-12,18:23:27 | INFO | Train Epoch: 13 [1642496/2755782 (60%)] Data (t): 11.198 Batch (t): 18.607, 218.816/s, 218.816/s/gpu LR: 0.000046 Logit Scale: 95.908 Contrastive_loss: 0.90263 (0.84437) Loss: 0.90263 (0.84437)
+2024-05-12,18:31:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-12,18:39:27 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-12,18:41:08 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+2024-05-12,18:43:58 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-12,18:51:28 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-12,18:51:31 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63050.jpg
+2024-05-12,18:54:42 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-12,18:54:47 | INFO | Train Epoch: 13 [2052096/2755782 (75%)] Data (t): 9.993 Batch (t): 18.804, 210.254/s, 210.254/s/gpu LR: 0.000045 Logit Scale: 95.982 Contrastive_loss: 0.90261 (0.85408) Loss: 0.90261 (0.85408)
+2024-05-12,19:19:04 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_25337.jpg
+2024-05-12,19:26:00 | INFO | Train Epoch: 13 [2461696/2755782 (89%)] Data (t): 6.669 Batch (t): 18.730, 215.608/s, 215.608/s/gpu LR: 0.000043 Logit Scale: 96.085 Contrastive_loss: 0.86399 (0.85549) Loss: 0.86399 (0.85549)
+2024-05-12,19:29:56 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-12,19:32:12 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-12,19:35:32 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24535.jpg
+2024-05-12,19:38:00 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-12,19:38:18 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-12,19:48:31 | INFO | Train Epoch: 13 [2752512/2755782 (100%)] Data (t): 10.680 Batch (t): 19.030, 200.027/s, 200.027/s/gpu LR: 0.000041 Logit Scale: 96.148 Contrastive_loss: 0.85274 (0.85515) Loss: 0.85274 (0.85515)
+2024-05-12,19:48:58 | INFO | Eval Epoch: 14 [1024 / 164657]	Clip Loss: 4.350568	
+2024-05-12,19:52:10 | INFO | Eval Epoch: 14 [103424 / 164657]	Clip Loss: 4.127195	
+2024-05-12,19:54:01 | INFO | Eval Epoch: 14 clip_val_loss: 4.1890	epoch: 14.0000	num_samples: 164657.0000
+2024-05-12,19:54:06 | INFO | Start epoch 14
+2024-05-12,19:54:34 | INFO | Train Epoch: 14 [   4096/2755782 (0%)] Data (t): 24.101 Batch (t): 27.577, 148.529/s, 148.529/s/gpu LR: 0.000041 Logit Scale: 96.150 Contrastive_loss: 0.76066 (0.76066) Loss: 0.76066 (0.76066)
+2024-05-12,20:07:59 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_67140.jpg
+2024-05-12,20:08:48 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50469.jpg
+2024-05-12,20:13:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_50644.jpg
+2024-05-12,20:24:01 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07233.jpg
+2024-05-12,20:25:47 | INFO | Train Epoch: 14 [ 413696/2755782 (15%)] Data (t): 15.244 Batch (t): 18.729, 207.628/s, 207.628/s/gpu LR: 0.000039 Logit Scale: 96.401 Contrastive_loss: 0.73704 (0.74885) Loss: 0.73704 (0.74885)
+2024-05-12,20:26:01 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_61045.jpg
+2024-05-12,20:31:27 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26232.jpg
+2024-05-12,20:37:33 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_40763.jpg
+2024-05-12,20:39:55 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_64107.jpg
+2024-05-12,20:46:46 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_77673.jpg
+2024-05-12,20:48:07 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07927.jpg
+2024-05-12,20:53:00 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_36338.jpg
+2024-05-12,20:56:30 | INFO | Train Epoch: 14 [ 823296/2755782 (30%)] Data (t): 14.716 Batch (t): 18.431, 217.323/s, 217.323/s/gpu LR: 0.000038 Logit Scale: 96.544 Contrastive_loss: 0.76830 (0.75533) Loss: 0.76830 (0.75533)
+2024-05-12,21:01:06 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_60391.jpg
+2024-05-12,21:12:12 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_07738.jpg
+2024-05-12,21:27:36 | INFO | Train Epoch: 14 [1232896/2755782 (45%)] Data (t): 15.190 Batch (t): 18.667, 233.069/s, 233.069/s/gpu LR: 0.000036 Logit Scale: 96.676 Contrastive_loss: 0.76869 (0.75867) Loss: 0.76869 (0.75867)
+/fs01/home/yaspar/Documents/envs/mmm/lib/python3.7/site-packages/PIL/Image.py:993: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+2024-05-12,21:50:52 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_37937.jpg
+2024-05-12,21:58:09 | INFO | Train Epoch: 14 [1642496/2755782 (60%)] Data (t): 11.041 Batch (t): 18.325, 214.559/s, 214.559/s/gpu LR: 0.000034 Logit Scale: 96.764 Contrastive_loss: 0.74884 (0.75671) Loss: 0.74884 (0.75671)
+2024-05-12,22:02:32 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_63365.jpg
+2024-05-12,22:07:50 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_29364.jpg
+2024-05-12,22:16:44 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_26439.jpg
+2024-05-12,22:28:49 | INFO | Train Epoch: 14 [2052096/2755782 (75%)] Data (t): 7.659 Batch (t): 18.397, 228.784/s, 228.784/s/gpu LR: 0.000032 Logit Scale: 96.872 Contrastive_loss: 0.75422 (0.75629) Loss: 0.75422 (0.75629)
+2024-05-12,22:32:09 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_53013.jpg
+2024-05-12,22:39:40 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_57545.jpg
+2024-05-12,22:43:04 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_47259.jpg
+2024-05-12,22:49:18 | ERROR | Error loading image /projects/aieng/multimodal/datasets/roco/cache/images/ROCO_24849.jpg
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+slurmstepd: error: *** JOB 12567230 ON gpu181 CANCELLED AT 2024-05-12T22:52:56 ***
+slurmstepd: error: *** STEP 12567230.0 ON gpu181 CANCELLED AT 2024-05-12T22:52:56 ***

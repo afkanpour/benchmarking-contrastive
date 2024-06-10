@@ -1,0 +1,15 @@
+{
+    "dataset": "roco",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "zeroshot_retrieval",
+    "metrics": {
+        "image_retrieval_recall@1": 0.05870841443538666,
+        "text_retrieval_recall@1": 0.045865949243307114,
+        "image_retrieval_recall@50": 0.49498531222343445,
+        "text_retrieval_recall@50": 0.4845890402793884,
+        "image_retrieval_recall@200": 0.7639432549476624,
+        "text_retrieval_recall@200": 0.7661448121070862
+    },
+    "language": "en"
+}

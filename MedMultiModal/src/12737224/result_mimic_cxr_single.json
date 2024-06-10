@@ -1,0 +1,15 @@
+{
+    "dataset": "mimic_cxr_single",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_retrieval",
+    "metrics": {
+        "image_retrieval_recall@1": 0.0003059039590880275,
+        "text_retrieval_recall@1": 0.0003059039590880275,
+        "image_retrieval_recall@50": 0.015295197255909443,
+        "text_retrieval_recall@50": 0.015295197255909443,
+        "image_retrieval_recall@200": 0.06148669496178627,
+        "text_retrieval_recall@200": 0.06148669496178627
+    },
+    "language": "en"
+}

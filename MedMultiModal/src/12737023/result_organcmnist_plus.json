@@ -1,0 +1,22 @@
+{
+    "dataset": "organcmnist_plus",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.04868549172346641,
+        "acc5": 0.3302093476144109,
+        "mean_per_class_recall": 0.08559815593484763,
+        "map_macro": 0.09163689613342285,
+        "map_weighted": 0.114752396941185,
+        "acc_micro": 0.05002434179186821,
+        "acc_macro": 0.08559815585613251,
+        "acc_weighted": 0.05002434179186821,
+        "f1_micro": 0.05002434179186821,
+        "f1_macro": 0.01203131303191185,
+        "f1_weighted": 0.00809364765882492,
+        "aucroc_macro": 0.498717337846756,
+        "aucroc_weighted": 0.4975350797176361
+    },
+    "language": "en"
+}

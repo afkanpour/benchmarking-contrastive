@@ -1,0 +1,27 @@
+{
+    "dataset": "pcam",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.741851806640625,
+        "lp_acc5": NaN,
+        "lp_mean_per_class_recall": 0.7418677317035156,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.8040774464607239,
+        "map_weighted": 0.8040835857391357,
+        "acc_micro": 0.741851806640625,
+        "acc_macro": 0.74186772108078,
+        "acc_weighted": 0.741851806640625,
+        "f1_micro": 0.741851806640625,
+        "f1_macro": 0.7414987683296204,
+        "f1_weighted": 0.7414946556091309,
+        "aucroc_macro": 0.816239595413208,
+        "aucroc_weighted": 0.816239595413208
+    },
+    "language": "en"
+}

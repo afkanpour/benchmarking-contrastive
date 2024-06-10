@@ -1,0 +1,27 @@
+{
+    "dataset": "lc25000_colon",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 1.0,
+        "lp_acc5": NaN,
+        "lp_mean_per_class_recall": 1.0,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 1.0,
+        "map_weighted": 1.0,
+        "acc_micro": 1.0,
+        "acc_macro": 1.0,
+        "acc_weighted": 1.0,
+        "f1_micro": 1.0,
+        "f1_macro": 1.0,
+        "f1_weighted": 1.0,
+        "aucroc_macro": 1.0,
+        "aucroc_weighted": 1.0
+    },
+    "language": "en"
+}

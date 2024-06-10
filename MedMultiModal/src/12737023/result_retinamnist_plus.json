@@ -1,0 +1,22 @@
+{
+    "dataset": "retinamnist_plus",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.1225,
+        "acc5": 1.0,
+        "mean_per_class_recall": 0.12256371814092955,
+        "map_macro": 0.16447043418884277,
+        "map_weighted": 0.2238989919424057,
+        "acc_micro": 0.1599999964237213,
+        "acc_macro": 0.12256371974945068,
+        "acc_weighted": 0.1599999964237213,
+        "f1_micro": 0.1599999964237213,
+        "f1_macro": 0.0806129053235054,
+        "f1_weighted": 0.1312330663204193,
+        "aucroc_macro": 0.4051280915737152,
+        "aucroc_weighted": 0.3400590419769287
+    },
+    "language": "en"
+}

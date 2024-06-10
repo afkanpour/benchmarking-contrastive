@@ -1,0 +1,27 @@
+{
+    "dataset": "lc25000_colon",
+    "model": "ViT-B-16-FILIP",
+    "pretrained": "openai",
+    "task": "linear_probe",
+    "metrics": {
+        "lp_acc1": 0.7325,
+        "lp_acc5": NaN,
+        "lp_mean_per_class_recall": 0.7322128092375483,
+        "weight_decay": 0,
+        "epochs": 40,
+        "seed": 0,
+        "fewshot_k": -1,
+        "normalized": true,
+        "map_macro": 0.7615593671798706,
+        "map_weighted": 0.760986328125,
+        "acc_micro": 0.7325000166893005,
+        "acc_macro": 0.7322127819061279,
+        "acc_weighted": 0.7325000166893005,
+        "f1_micro": 0.7325000166893005,
+        "f1_macro": 0.7321028709411621,
+        "f1_weighted": 0.7321957349777222,
+        "aucroc_macro": 0.7825888395309448,
+        "aucroc_weighted": 0.7825888395309448
+    },
+    "language": "en"
+}

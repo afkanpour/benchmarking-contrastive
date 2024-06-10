@@ -1,0 +1,22 @@
+{
+    "dataset": "organsmnist_plus",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.2359805143310298,
+        "acc5": 0.7991390053245724,
+        "mean_per_class_recall": 0.3134209930332827,
+        "map_macro": 0.32255232334136963,
+        "map_weighted": 0.28553783893585205,
+        "acc_micro": 0.23564064502716064,
+        "acc_macro": 0.31342101097106934,
+        "acc_weighted": 0.23564065992832184,
+        "f1_micro": 0.23564064502716064,
+        "f1_macro": 0.26119932532310486,
+        "f1_weighted": 0.204509899020195,
+        "aucroc_macro": 0.8003993630409241,
+        "aucroc_weighted": 0.7201999425888062
+    },
+    "language": "en"
+}

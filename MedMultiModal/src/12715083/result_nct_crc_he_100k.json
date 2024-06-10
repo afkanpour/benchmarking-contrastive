@@ -1,0 +1,22 @@
+{
+    "dataset": "nck",
+    "model": "ViT-B-16",
+    "pretrained": "/projects/multimodal/checkpoints/methods/Methods_Flip_ViT_B_16_05/checkpoints/epoch_7.pt",
+    "task": "zeroshot_classification",
+    "metrics": {
+        "acc1": 0.6519816832464866,
+        "acc5": 0.9741039002052739,
+        "mean_per_class_recall": 0.6465478475453679,
+        "map_macro": 0.7078914642333984,
+        "map_weighted": 0.7328851819038391,
+        "acc_micro": 0.6505605578422546,
+        "acc_macro": 0.6465479135513306,
+        "acc_weighted": 0.6505606174468994,
+        "f1_micro": 0.6505605578422546,
+        "f1_macro": 0.6078132390975952,
+        "f1_weighted": 0.6210421919822693,
+        "aucroc_macro": 0.9304261803627014,
+        "aucroc_weighted": 0.9354501366615295
+    },
+    "language": "en"
+}
