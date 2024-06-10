@@ -84,7 +84,8 @@ cd src
 export PYTHONPATH="./"
 ```
 
-3. Run the evaluation script. For example, the following command runs retrieval on the ROCO dataset.
+3. Run the evaluation script. 
+For example, the following command runs retrieval on the ROCO dataset.
 ```bash
 python -u clip_benchmark/cli.py eval \
     --dataset roco \
@@ -93,6 +94,34 @@ python -u clip_benchmark/cli.py eval \
     --pretrained openai \
     --output result_roco.json \
     --recall_k 1 50 200 \
+    --batch_size 64
+```
+
+Example of zero-shot classification:
+```bash
+python clip_benchmark/cli.py eval \
+    --dataset pad_ufes_20 \
+    --split test \
+    --dataset_root /projects/multimodal/datasets/pad_ufes_20 \
+    --task zeroshot_classification  \
+    --model ViT-B-16 \
+    --pretrained openai \
+    --output result_pad_ufes_20.json
+```
+
+Example of linear probe:
+```bash
+python -u clip_benchmark/cli.py eval \
+    --dataset pad_ufes_20 \
+    --train_split train \
+    --split test \
+    --dataset_root /projects/multimodal/datasets/pad_ufes_20 \
+    --task linear_probe \
+    --model ViT-B-16 \
+    --pretrained openai \
+    --output result_pad_ufes_20.json \
+    --fewshot_lr 0.1 \
+    --fewshot_epochs 40 \
     --batch_size 64
 ```
 
