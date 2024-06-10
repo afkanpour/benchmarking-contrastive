@@ -1,153 +1,101 @@
 # multimodal-neurips2024
 
-# Pre-training 
-```
-torchrun -m training.main \
-        --model ViT-B-32 \
-        --pretrained openai \
-        --train-data ./data/quilt/quilt_1M_lookup.csv \
-        --train-num-samples 1017708 \
-        --dataset-type mixed \
-        --csv-separator , \
-        --batch-size 256 \
-        --accum-freq 4 \
-        --workers 8 \
-        --lr 1e-5 \
-        --lr-scheduler const \
-        --epochs 15 \
-        --warmup 200 \
-        --aug-cfg quilt_crop=True \
-        --wd 0.1 \
-        --name ViT-B-32-QUILT \
-        --resume latest \
-        --gather-with-grad \
-        --logs ~/scratch/logs \
-        --zeroshot-frequency 1 \
-        --report-to wandb,tensorboard \
-        --wandb_offline \
-        --pathmnist
-```
-## Pre-tranining methods
-### Method 1. CLIP
-Default setup 
-
-### Method 2. CLIP + CoCa
-- Change model with `model coca_ViT-B-32`
-To use ViT-B/16 encoder with openai weight:
-
-```
---model coca_ViT-B-32 --pretrained laion2b_s13b_b90k --caption-encoder ViT-B-16
-```
-
-### Method 3. Train only one modality 
-- Use  `--lock-text` to freeze text branch
-- Use `--lock-image` to freeze image branch
-
-### Method 4. Train partial encoder 
-- First lock the enocder 
-- The use `--lock-image-unlocked-groups 2` to train last 2 layers
-- Use `--lock-text-unlocked-layers` for text
-
-### Method 5. FLIP
-- Add `--force_patch_dropout 0.75` to set mask ration of 75%
-
-### Method 6. Unimodal Contrastive leanrnig on Image + CLIP
-- Add `--image-contrast`
-- Add `--aug-cfg num_views=2`
-
-
-### Method 7. Unimodal Masked Contrastive leanrnig on Image + CLIP
-- Add `--image-contrast`
-- Add `--aug-cfg num_views=2`
-- Add `--mask-contrast`
-
-
-
-## Other Training options
-### Training on PMC-OA
+## Getting Started
+1. Clone this repository:
 ```bash
---train-data ./data/pmc_oa/train.jsonl --train-num-samples 1317219 --dataset-type json
+git clone https://github.com/afkanpour/multimodal-neurips2024.git
 ```
 
-### Training on Quilt-1M
+2. Create and activate a virtual environment:
 ```bash
---train-data ./data/quilt/quilt_1M_lookup.csv --train-num-samples 1017708 --dataset-type mixed --csv-separator , \
+python3 -m venv /path/to/new/virtual/environment/multimodal_env
+source /path/to/new/virtual/environment/multimodal_env/bin/activate
 ```
 
-### Training on MIMIC-CXR
+3. Install the requirements:
 ```bash
---train-data ./data/mimic_cxr/mimic_cxr_single_image_train.csv --train-num-samples 222758 --dataset-type csv --csv-separator , \
---csv-img-root path/to/where/images/are/stored --csv-img-key image --csv-caption-key caption
+cd MedMultiModal
+pip install -r requirements.txt
 ```
 
-### Training Quilt and PMC-QA combined
+This codebase is tested with python3.7 and torch 1.13 built with cuda 11.7
+
+_Note:_ we have extended the code of two well-tested repositories to run our experiments: open_clip [[1]](#1) and clip_benchmark [[2]](#2).
+
+<!-- ## Datasets
+### Pre-training
+
+### Evaluation -->
+
+## Usage
+### Pre-training
+1. Move to the `src` directory:
 ```bash
---train-data ./data/pmc_oa/train.jsonl::./data/quilt/quilt_1M_lookup.csv --train-num-samples 2334927 --dataset-type mixed --csv-separator , \
+cd src
 ```
 
-## Training from different pre-trained encoder
-
-### loading BiomedCLIP
+2. Add the directory to `PYTHONPATH`:
 ```bash
---model hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224 \
+export PYTHONPATH="./"
 ```
 
-
-### Loading Quilt
+3. Run the training script. For example, the following command trains a model with ViT-B/16 visual encoder and GPT/77 text encoder, on a combination of four medical datasets, and logs the results using Weights & Biases.
+The model is loaded with pretrained weights from "openai", i.e. pretrained on the ImageNet dataset.
 ```bash
---model hf-hub:wisdomik/QuiltNet-B-16 
-or 
---model hf-hub:wisdomik/QuiltNet-B-32 
- ```
-
-### Loading our own trained encoder
-```bash
---model ViT-B-32 \
---pretrained ./logs/checkpoint.pt
- ```
-
-
-# Evaluation
-
-## Zero-Shot
-
-### Testing on all datasts currently supported
-```bash
-python clip_benchmark/cli.py eval \
-        --dataset pcam nck lc25000_lung lc25000_colon bach sicap  \
-        --task=zeroshot_classification  \
-        --model=ViT-L-14 \
-        --pretrained=datacomp_xl_s13b_b90k
+python -u training/main.py \
+    --model ViT-B-16 \
+    --pretrained openai \
+    --train-data /projects/multimodal/datasets/pmc_oa/train.jsonl::/projects/multimodal/datasets/Quilt_1M/quilt_1m_train.csv::/projects/multimodal/datasets/mimic_cxr/mimic_cxr_double_image_train.csv::/projects/aieng/multimodal/datasets/roco/cache/radiologytraindata.csv \
+    --train-num-samples 2769337 \
+    --dataset-type mixed \
+    --csv-separator , \
+    --val-data /projects/multimodal/datasets/pmc_oa/valid.jsonl \
+    --val-no-retrieval \
+    --batch-size 128 \
+    --accum-freq 4 \
+    --workers 4 \
+    --lr 5e-5 \
+    --lr-scheduler cosine \
+    --epochs 20 \
+    --warmup 0 \
+    --aug-cfg quilt_crop=True \
+    --wd 0.1 \
+    --name GPT-77-ViT-B-16\
+    --resume latest \
+    --gather-with-grad \
+    --logs /checkpoint/$USER/$SLURM_JOBID/ \
+    --zeroshot-frequency 1 \
+    --report-to wandb
 ```
 
+The commands used to run all of our experiments can be found in their corresponding slurm scripts in `MedMultiModal/scripts/various_methods/` and `MedMultiModal/scripts/hp_tuning/` and `MedMultiModal/scripts/encoder_combination/`.
 
-### Testing PCAM on a custom checkpoint
+### Downstream Evaluation
+1. Move to the `src` directory:
 ```bash
---model=coca_ViT-B-32 \
---pretrained=./logs/ViT-B-16\/checkpoints/epoch_45.pt
+cd src
 ```
 
-## Steps for adding new dataset for ZSL
-- add class in src/clip_benchmark/dataset/medical_datasets.py
-- add a condifion for load this class in src/clip_benchmark/dataset/builder.py
-- add classnames in src/clip_benchmark/dataset/en_classname.json
-- add prompt templates in src/clip_benchmark/dataset/en_zeroshot_classification_templates.json
-
-## Currently supported dataset
-- pcam
-- nck
-- bach
-- lc25000_colon
-- lc25000_lung
-- sicap
-
-## Linear probing example from CLIP_benchmark
+2. Add the directory to `PYTHONPATH`:
 ```bash
-python clip_benchmark/cli.py eval --dataset=cifar10 --task=linear_probe --pretrained=laion400m_e32 --model=ViT-B-32-quickgelu --output=result.json --batch_size=64 --fewshot_lr 0.1 --fewshot_epochs 20 --batch_size 512 --train_split train --test_split test
+export PYTHONPATH="./"
 ```
 
-## Retrieval
-```bash 
-python clip_benchmark/cli.py eval --dataset=roco --task=zeroshot_retrieval --pretrained=laion400m_e32 --model=ViT-B-32-quickgelu --output=result.json --batch_size=64
+3. Run the evaluation script. For example, the following command runs retrieval on the ROCO dataset.
+```bash
+python -u clip_benchmark/cli.py eval \
+    --dataset roco \
+    --task zeroshot_retrieval \
+    --model ViT-B-16 \
+    --pretrained openai \
+    --output result_roco.json \
+    --recall_k 1 50 200 \
+    --batch_size 64
 ```
 
+The commands used to run all of our downstream evaluations can be found in their corresponding slurm scripts in `MedMultiModal/scripts/downstream_eval/`.
+
+## References
+<a id="1">[1]</a> open_clip: https://github.com/mlfoundations/open_clip
+
+<a id="2">[2]</a> clip_benchmark: https://github.com/LAION-AI/CLIP_benchmark
