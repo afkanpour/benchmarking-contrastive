@@ -22,12 +22,12 @@ from .model import (
     CLIP,
     CustomTextCLIP,
     convert_to_custom_text_state_dict,
+    convert_weights_to_lp,
     get_cast_dtype,
+    replace_vision_tower,
     resize_pos_embed,
     resize_text_pos_embed,
     set_model_preprocess_cfg,
-    replace_vision_tower,
-    convert_weights_to_lp,
 )
 from .openai import load_openai_model
 from .pretrained import (
@@ -44,7 +44,6 @@ from .transform import (
     merge_preprocess_dict,
     merge_preprocess_kwargs,
 )
-
 
 HF_HUB_PREFIX = "hf-hub:"
 _MODEL_CONFIG_PATHS = [Path(__file__).parent / "model_configs/"]
@@ -262,7 +261,13 @@ def create_model(
                 model_cfg, **model_kwargs
             )  # merge cfg dict w/ kwargs (kwargs overrides cfg)
 
-            model = replace_vision_tower(model=model, **model_cfg, cast_dtype=cast_dtype, device=device, precision=precision)
+            model = replace_vision_tower(
+                model=model,
+                **model_cfg,
+                cast_dtype=cast_dtype,
+                device=device,
+                precision=precision,
+            )
             model.token_level_embedding = True
     else:
         model_cfg = model_cfg or get_model_config(model_name)
@@ -308,6 +313,7 @@ def create_model(
             model_cfg.pop("custom_text", False) or force_custom_text or is_hf_model
         )
 
+        is_filip = model_kwargs.get("filip", False)
         if model_kwargs.get("filip", False):
             model_kwargs.pop("filip")
         model_cfg = dict(
@@ -320,6 +326,16 @@ def create_model(
                 model = CustomTextCLIP(**model_cfg, cast_dtype=cast_dtype)
         else:
             model = CLIP(**model_cfg, cast_dtype=cast_dtype)
+
+        if is_filip:
+            model = replace_vision_tower(
+                model=model,
+                **model_cfg,
+                cast_dtype=cast_dtype,
+                device=device,
+                precision=precision,
+            )
+            model.token_level_embedding = True
 
         num_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
         print("Number of parameters: ", num_params)

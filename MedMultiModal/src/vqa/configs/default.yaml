@@ -1,0 +1,91 @@
+# @package _global_
+
+# to execute this experiment run:
+# python <script_name>.py experiment=vqa
+
+defaults:
+  - dataset: pathvqa
+  - _self_
+
+experiment_name: ???
+
+# whether to run training or evaluation
+# options: "train", "eval"
+job_type: train
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: 42
+
+# tags to help identify expriments
+# this can be overridden in experiment configs
+# on the command line the list has to be passed as a string e.g. `python <script_name>.py tags="[tag1, tag2]"`
+# appending lists from command line is currently not supported
+# https://github.com/facebookresearch/hydra/issues/1547
+tags:
+  - ${experiment_name}
+  - rgb
+  - text
+  - multimodal
+  - clip
+  - vqa
+  - attention_fusion
+
+resume_from_checkpoint: null
+
+dataset:
+  train:
+    encoder:
+      image_size: 224
+    autoencoder:
+      # MUST match the pipeline
+      available: true
+      image_size: 128
+    tokenizer:
+      context_length: 12
+  valid:
+    encoder:
+      image_size: 224
+    autoencoder:
+      # MUST match the pipeline
+      available: true
+      image_size: 128
+    tokenizer:
+      context_length: 12
+  test:
+    encoder:
+      image_size: 224
+    autoencoder:
+      # MUST match the pipeline
+      available: true
+      image_size: 128
+    tokenizer:
+      context_length: 12
+
+module:
+  _target_: vqa.lit_module.VQA
+  network:
+    model_name: ViT-B-16_vqa
+    pretrained: ???
+    caption_encoder: null # for coca models
+    filip: False
+    autoencoder:
+      # MUST match the dataset
+      enabled: true
+      file_path: "${oc.env:VQARAD_ROOT_DIR}/pretrained_ae.pth"
+      alpha: 0.001
+      feat_dim: 512
+    fusion:
+      # "BAN" or "SAN"
+      arch: BAN
+      num_hid: 512
+      gamma: 2
+      use_counter: false
+    classifier:
+      # MUST match number of answer candidates in the dataset
+      num_classes: ${dataset.train.num_ans_candidates}
+      activation: relu
+      dropout: 0.5
+    dump_result: false
+  optimizer:
+    lr: 1.0e-3
+

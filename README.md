@@ -124,8 +124,13 @@ python -u clip_benchmark/cli.py eval \
     --fewshot_epochs 40 \
     --batch_size 64
 ```
+The commands used to run all of the above downstream evaluations can be found in their corresponding slurm scripts in 
+`MedMultiModal/scripts/downstream_eval/`.
 
-The commands used to run all of our downstream evaluations can be found in their corresponding slurm scripts in `MedMultiModal/scripts/downstream_eval/`.
+Example of VQA:
+```bash
+python vqa/run.py experiment_name=pathvqa_test module.network.pretrained=<path_to_pretrained_model>
+```
 
 ## References
 <a id="1">[1]</a> open_clip: https://github.com/mlfoundations/open_clip

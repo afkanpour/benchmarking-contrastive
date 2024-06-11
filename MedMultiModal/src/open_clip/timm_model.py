@@ -9,7 +9,6 @@ from collections import OrderedDict
 import torch
 from torch import nn
 
-
 try:
     import timm
     from timm.models.layers import Mlp, to_2tuple
@@ -118,6 +117,7 @@ class TimmModel(nn.Module):
             )
 
         self.head = nn.Sequential(head_layers)
+        self.output_dim = embed_dim  # here to match API of other vision towers
 
     def lock(self, unlocked_groups=0, freeze_bn_stats=False):
         """Lock modules

@@ -10,6 +10,7 @@ from copy import copy
 from itertools import product
 
 import torch
+
 from clip_benchmark.dataset.builder import (
     build_dataset,
     dataset_collection,
@@ -18,6 +19,7 @@ from clip_benchmark.dataset.builder import (
     get_dataset_default_task,
 )
 from clip_benchmark.metrics import (
+    captioning,
     image_caption_selection,
     linear_probe,
     zeroshot_classification,
@@ -507,7 +509,9 @@ def run(args):
             if args.filip_checkpoint != "":
                 checkpoint = torch.load(args.filip_checkpoint, map_location="cpu")
                 sd = checkpoint["state_dict"]
-                if not args.distributed and next(iter(sd.items()))[0].startswith("module"):
+                if not args.distributed and next(iter(sd.items()))[0].startswith(
+                    "module"
+                ):
                     sd = {k[len("module.") :]: v for k, v in sd.items()}
                 model.load_state_dict(sd)
                 print(f"Loaded checkpoint {args.filip_checkpoint}")
@@ -660,7 +664,7 @@ def run(args):
             normalize=args.normalize,
             amp=args.amp,
             verbose=args.verbose,
-            multi_label = args.dataset in ["chestmnist_plus"],
+            multi_label=args.dataset in ["chestmnist_plus"],
         )
     elif task == "captioning":
         metrics = captioning.evaluate(
@@ -725,5 +729,3 @@ def world_info_from_env():
 
 if __name__ == "__main__":
     sys.exit(main())  # pragma: no cover
-
-
