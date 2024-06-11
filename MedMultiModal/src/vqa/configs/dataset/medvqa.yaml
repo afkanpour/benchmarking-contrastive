@@ -1,0 +1,19 @@
+_target_: vqa.datasets.medvqa.MedVQA
+root_dir: null
+split: null
+num_ans_candidates: null
+encoder:
+  image_size: 224
+autoencoder:
+  available: true
+  image_size: 128
+ae_transform: null
+tokenizer: null
+rgb_transform:
+  _target_: torchvision.transforms.v2.Compose
+  transforms:
+    - _target_: torchvision.transforms.v2.Resize
+      size: 224
+    - _target_: torchvision.transforms.v2.CenterCrop
+      size: 224
+    - _target_: torchvision.transforms.ToTensor

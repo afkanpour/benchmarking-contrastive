@@ -83,6 +83,7 @@ class CoCa(nn.Module):
         init_logit_bias: Optional[float] = None,
         cast_dtype: Optional[torch.dtype] = None,
         pad_id: int = 0,
+        token_level_embedding: bool = False,
     ):
         super().__init__()
         multimodal_cfg = (
@@ -130,6 +131,7 @@ class CoCa(nn.Module):
         self.pad_id = pad_id
 
         self.context_length = multimodal_cfg.context_length
+        self.token_level_embedding = token_level_embedding
 
     @torch.jit.ignore
     def set_grad_checkpointing(self, enable: bool = True):
@@ -152,8 +154,8 @@ class CoCa(nn.Module):
         return image_latent
 
     def encode_text(self, text, normalize: bool = True):
-        text_latent, _ = self._encode_text(text, normalize=normalize)
-        return text_latent
+        text_latent, token_emb = self._encode_text(text, normalize=normalize)
+        return token_emb if self.token_level_embedding else text_latent
 
     def lock_image_tower(self, unlocked_groups=0, freeze_bn_stats=False):
         # lock image tower as per LiT - https://arxiv.org/abs/2111.07991
@@ -221,9 +223,7 @@ class CoCa(nn.Module):
     ):
         # taking many ideas and components from HuggingFace GenerationMixin
         # https://huggingface.co/docs/transformers/main/en/main_classes/text_generation
-        assert (
-            _has_transformers
-        ), "Please install transformers for generate functionality. `pip install transformers`."
+        assert _has_transformers, "Please install transformers for generate functionality. `pip install transformers`."
         assert seq_len > min_seq_len, "seq_len must be larger than min_seq_len"
 
         with torch.no_grad():
@@ -400,7 +400,6 @@ class CoCa(nn.Module):
         beam_scores = beam_scores.view((batch_size * num_beams,))
 
         while True:
-
             # predicted tokens in cur_len step
             current_tokens = torch.zeros(
                 batch_size * num_beams, dtype=input_ids.dtype, device=device
@@ -542,5 +541,3 @@ def prepare_inputs_for_generation(input_ids, image_inputs, past=None, **kwargs):
         "position_ids": position_ids,
         "attention_mask": attention_mask,
     }
-
-

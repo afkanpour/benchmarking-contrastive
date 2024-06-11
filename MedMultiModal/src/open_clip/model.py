@@ -1,4 +1,4 @@
-""" CLIP Model
+"""CLIP Model
 
 Adapted from https://github.com/openai/CLIP. Originally MIT License, Copyright (c) 2021 OpenAI.
 """
@@ -9,7 +9,6 @@ import math
 from dataclasses import dataclass
 from functools import partial
 from typing import Any, Dict, Optional, Tuple, Union
-from collections import OrderedDict
 
 import numpy as np
 import torch
@@ -41,12 +40,8 @@ class CLIPVisionCfg:
     image_size: Union[Tuple[int, int], int] = 224
 
     ls_init_value: Optional[float] = None  # layer scale initial value
-    patch_dropout: float = (
-        0.0  # what fraction of patches to dropout during training (0 would mean disabled and no patches dropped) - 0.5 to 0.75 recommended in the paper for optimal results
-    )
-    attentional_pool: bool = (
-        False  # whether to use attentional pooler in the last embedding layer (overrides pool_type)
-    )
+    patch_dropout: float = 0.0  # what fraction of patches to dropout during training (0 would mean disabled and no patches dropped) - 0.5 to 0.75 recommended in the paper for optimal results
+    attentional_pool: bool = False  # whether to use attentional pooler in the last embedding layer (overrides pool_type)
     attn_pooler_queries: int = 256  # n_queries for attentional pooler
     attn_pooler_heads: int = 8  # n heads for attentional_pooling
     no_ln_pre: bool = False  # disable pre transformer LayerNorm
@@ -248,31 +243,31 @@ def _build_text_tower(
 
 
 def replace_vision_tower(
-        model: torch.nn.Module,
-        embed_dim: int,
-        vision_cfg: CLIPVisionCfg,
-        text_cfg: CLIPTextCfg,
-        quick_gelu: bool = False,
-        init_logit_scale: float = np.log(1 / 0.07),
-        init_logit_bias: Optional[float] = None,
-        cast_dtype: Optional[torch.dtype] = None,
-        output_dict: bool = False,
-        device: Optional[Union[str, torch.device]] = None,
-        precision: Optional[str] = None,
-        ):
+    model: torch.nn.Module,
+    embed_dim: int,
+    vision_cfg: CLIPVisionCfg,
+    text_cfg: CLIPTextCfg,
+    quick_gelu: bool = False,
+    init_logit_scale: float = np.log(1 / 0.07),
+    init_logit_bias: Optional[float] = None,
+    cast_dtype: Optional[torch.dtype] = None,
+    output_dict: bool = False,
+    device: Optional[Union[str, torch.device]] = None,
+    precision: Optional[str] = None,
+):
     "Replace the vision tower in a CLIP model"
     if device is None:
         device = "cuda" if torch.cuda.is_available() else "cpu"
     if precision is None:
-        precision = 'fp32' if device == 'cpu' else 'fp16'
+        precision = "fp32" if device == "cpu" else "fp16"
     cast_dtype = get_cast_dtype(precision)
 
-    model.visual = _build_vision_tower(embed_dim, vision_cfg, quick_gelu, cast_dtype)    
+    model.visual = _build_vision_tower(embed_dim, vision_cfg, quick_gelu, cast_dtype)
     model = model.to(device)
     # FIXME support pure fp16/bf16 precision modes
-    if precision != 'fp16':
+    if precision != "fp16":
         model.float()
-        if precision == 'bf16':
+        if precision == "bf16":
             # for bf16, convert back to low-precision
             convert_weights_to_lp(model, dtype=torch.bfloat16)
     return model
@@ -338,11 +333,6 @@ class CLIP(nn.Module):
 
     def encode_image(self, image, normalize: bool = False):
         features = self.visual(image)
-        if self.token_level_embedding is False and len(features.shape) == 3:
-            # pool the cls token
-            features = features[:, 0]
-        elif self.token_level_embedding is True and len(features.shape) == 2:
-            print(f"Warning: `token_level_embedding` is set while the vision transformer only returns sample level embeddings.")
         return F.normalize(features, dim=-1) if normalize else features
 
     def encode_text(self, text, normalize: bool = False):

@@ -1,0 +1,32 @@
+defaults:
+  - ./@train: medvqa
+  - ./@valid: medvqa
+  - ./@test: medvqa
+  - _self_
+
+train:
+  root_dir: "${oc.env:PATHVQA_ROOT_DIR}"
+  num_ans_candidates: 3974
+  split: train
+  tokenizer:
+    _target_: vqa.dataset_vqa.Dictionary.load_from_file
+    path: "${oc.env:PATHVQA_ROOT_DIR}/dictionary.pkl"
+    context_length: 12
+
+valid:
+  root_dir: "${oc.env:PATHVQA_ROOT_DIR}"
+  num_ans_candidates: 3974
+  split: val
+  tokenizer:
+    _target_: vqa.dataset_vqa.Dictionary.load_from_file
+    path: "${oc.env:PATHVQA_ROOT_DIR}/dictionary.pkl"
+    context_length: 12
+
+test:
+  root_dir: "${oc.env:PATHVQA_ROOT_DIR}"
+  num_ans_candidates: 3974
+  split: test
+  tokenizer:
+    _target_: vqa.dataset_vqa.Dictionary.load_from_file
+    path: "${oc.env:PATHVQA_ROOT_DIR}/dictionary.pkl"
+    context_length: 12
