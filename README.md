@@ -27,9 +27,6 @@ _Note:_ we have extended the code of two well-tested repositories to run our exp
 
 ### Evaluation -->
 
-## Slurm Scripts
-The slurm scripts that we used to run all of our experiments are stored in `MedMultiModal/scripts/`, and organized in separate folders for separate sets of experiments, including `hp_tuning`, `encoder_combination`, `various_methods` and `downstream_eval`.
-
 ## Usage
 ### Pre-training
 1. Move to the `src` directory:
