@@ -3,7 +3,7 @@
 ## Getting Started
 1. Clone this repository:
 ```bash
-git clone https://github.com/afkanpour/multimodal-neurips2024.git
+git clone <link to this repository>
 ```
 
 2. Create and activate a virtual environment:
@@ -45,11 +45,11 @@ The model is loaded with pretrained weights from "openai", i.e. pretrained on th
 python -u training/main.py \
     --model ViT-B-16 \
     --pretrained openai \
-    --train-data /projects/multimodal/datasets/pmc_oa/train.jsonl::/projects/multimodal/datasets/Quilt_1M/quilt_1m_train.csv::/projects/multimodal/datasets/mimic_cxr/mimic_cxr_double_image_train.csv::/projects/aieng/multimodal/datasets/roco/cache/radiologytraindata.csv \
+    --train-data pmc_oa/train.jsonl::Quilt_1M/quilt_1m_train.csv::/mimic_cxr/mimic_cxr_double_image_train.csv::roco/cache/radiologytraindata.csv \
     --train-num-samples 2769337 \
     --dataset-type mixed \
     --csv-separator , \
-    --val-data /projects/multimodal/datasets/pmc_oa/valid.jsonl \
+    --val-data pmc_oa/valid.jsonl \
     --val-no-retrieval \
     --batch-size 128 \
     --accum-freq 4 \
@@ -67,8 +67,6 @@ python -u training/main.py \
     --zeroshot-frequency 1 \
     --report-to wandb
 ```
-
-The commands used to run all of our experiments can be found in their corresponding slurm scripts in `MedMultiModal/scripts/various_methods/` and `MedMultiModal/scripts/hp_tuning/` and `MedMultiModal/scripts/encoder_combination/`.
 
 ### Downstream Evaluation
 1. Move to the `src` directory:
@@ -99,7 +97,7 @@ Example of zero-shot classification:
 python clip_benchmark/cli.py eval \
     --dataset pad_ufes_20 \
     --split test \
-    --dataset_root /projects/multimodal/datasets/pad_ufes_20 \
+    --dataset_root datasets/pad_ufes_20 \
     --task zeroshot_classification  \
     --model ViT-B-16 \
     --pretrained openai \
@@ -112,7 +110,7 @@ python -u clip_benchmark/cli.py eval \
     --dataset pad_ufes_20 \
     --train_split train \
     --split test \
-    --dataset_root /projects/multimodal/datasets/pad_ufes_20 \
+    --dataset_root datasets/pad_ufes_20 \
     --task linear_probe \
     --model ViT-B-16 \
     --pretrained openai \
@@ -121,8 +119,7 @@ python -u clip_benchmark/cli.py eval \
     --fewshot_epochs 40 \
     --batch_size 64
 ```
-The commands used to run all of the above downstream evaluations can be found in their corresponding slurm scripts in 
-`MedMultiModal/scripts/downstream_eval/`.
+
 
 Example of VQA:
 ```bash
