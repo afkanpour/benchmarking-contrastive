@@ -1,0 +1,51 @@
+#!/bin/bash
+
+#SBATCH --job-name=wacv_vqa
+#SBATCH --partition=a40
+#SBATCH --qos=a40_arashaf_multimodal
+#SBATCH --mem=40G
+#SBATCH --time=8:00:00
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --export=ALL
+#SBATCH --output=outputs/slurm-%j-%N.out
+
+PY_ARGS=${@:1}
+
+# load virtual environment
+source ~/.bashrc
+source ~/Documents/envs/mybase/bin/activate
+
+export NCCL_IB_DISABLE=1  # disable InfiniBand (the Vector cluster does not have it)
+export NCCL_DEBUG=WARN
+export NCCL_DEBUG_SUBSYS=WARN
+export NCCL_ASYNC_ERROR_HANDLING=1 # set to 1 for NCCL backend
+export CUDA_LAUNCH_BLOCKING=1
+export TORCH_DISTRIBUTED_DEBUG=DETAIL
+export HYDRA_FULL_ERROR=1
+
+export MASTER_ADDR=$(hostname --fqdn)
+export MASTER_PORT="$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1])')"
+
+export PYTHONPATH="."
+nvidia-smi
+
+# "srun" executes the script <ntasks-per-node * nodes> times
+# train
+# srun --export=ALL -N $SLURM_JOB_NUM_NODES python vqa/run.py \
+#     experiment_name=vqarad_teun9 \
+#     dataset=vqarad \
+#     module.network.model_name=ViT-B-16_vqa \
+#     module.network.pretrained=/projects/multimodal/checkpoints/methods/wacv_exps/Methods_Clip_TextUnlocked_9_ViT_B_16/checkpoints/epoch_10.pt \
+#     job_type=train
+
+# eval
+srun --export=ALL -N $SLURM_JOB_NUM_NODES python vqa/run.py \
+    experiment_name=pathvqa_teun9 \
+    dataset=pathvqa \
+    module.network.model_name=ViT-B-16_vqa \
+    module.network.pretrained=/projects/multimodal/checkpoints/methods/wacv_exps/Methods_Clip_TextUnlocked_9_ViT_B_16/checkpoints/epoch_10.pt \
+    job_type=eval \
+    resume_from_checkpoint="/checkpoint/yaspar/13487228/checkpoints/lightning_logs/version_0/checkpoints/epoch\=19-step\=12340.ckpt"

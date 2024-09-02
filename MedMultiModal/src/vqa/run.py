@@ -55,9 +55,9 @@ def instantiate_datasets(
     train_dataset, valid_dataset, test_dataset = None, None, None
     if "train" in dataset_cfg:
         train_dataset = _instantiate_split(dataset_cfg.train, "train")
-    elif "valid" in dataset_cfg:
+    if "valid" in dataset_cfg and "_target_" in dataset_cfg.valid:
         valid_dataset = _instantiate_split(dataset_cfg.valid, "valid")
-    elif "test" in dataset_cfg:
+    if "test" in dataset_cfg:
         test_dataset = _instantiate_split(dataset_cfg.test, "test")
 
     return train_dataset, valid_dataset, test_dataset
@@ -70,7 +70,8 @@ def main(cfg: DictConfig) -> None:  # noqa: PLR0912
     if rand_seed is not None:
         L.seed_everything(rand_seed, workers=True)
 
-    out_dir = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
+    # out_dir = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
+    out_dir = os.path.join("/checkpoint", os.environ["USER"], os.environ["SLURM_JOBID"])
 
     # configure trainer
     trainer = Trainer(
@@ -104,7 +105,7 @@ def main(cfg: DictConfig) -> None:  # noqa: PLR0912
     # prepare dataloaders
     if cfg.job_type == "train":
         train_loader = DataLoader(
-            train_dataset, batch_size=32, shuffle=True, drop_last=True, pin_memory=True
+            train_dataset, batch_size=32, shuffle=True, drop_last=True, pin_memory=True, num_workers=4
         )
         val_loader: Optional[DataLoader] = None
         if val_dataset is not None:
@@ -114,6 +115,7 @@ def main(cfg: DictConfig) -> None:  # noqa: PLR0912
                 shuffle=False,
                 drop_last=False,
                 pin_memory=True,
+                num_workers=4,
             )
     else:
         test_loader: Optional[DataLoader] = None
