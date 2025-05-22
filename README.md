@@ -1,5 +1,3 @@
-# multimodal-neurips2024
-
 ## Getting Started
 1. Clone this repository:
 ```bash
